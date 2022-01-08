@@ -4,7 +4,7 @@ CREATE TABLE stories (
   id SERIAL PRIMARY KEY NOT NULL,
   title VARCHAR(255) NOT NULL,
   flavour_text VARCHAR(255) NOT NULL,
-  cover_photo VARCHAR(255) NOT NULL,
+  cover_photo VARCHAR(255),
   is_complete BOOLEAN NOT NULL DEFAULT FALSE,
   text TEXT NOT NULL,
   genre VARCHAR(255) NOT NULL,
