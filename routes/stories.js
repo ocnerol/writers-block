@@ -25,4 +25,22 @@ module.exports = (db) => {
       });
   });
 
+  // Read stories (single story)
+  router.get("/:id", (req, res) => {
+    const id = req.params.id;
+    const query = `SELECT * FROM stories WHERE id = $1;`;
+    console.log(query);
+    db.query(query, [id])
+      .then(data => {
+        const story = data.rows[0];
+        res.json(story);
+      })
+      .catch(error => {
+        res
+          .status(500)
+          .json({error: error.message});
+      });
+  });
+
+  return router;
 };
