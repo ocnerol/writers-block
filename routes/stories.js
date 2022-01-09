@@ -6,7 +6,7 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
 module.exports = (db) => {
   // Browse stories
@@ -28,17 +28,73 @@ module.exports = (db) => {
   // Read story
   router.get("/:id", (req, res) => {
     const id = req.params.id;
-    const query = `SELECT * FROM stories WHERE id = $1;`;
+    const query = `
+    SELECT stories.title AS story_title,
+           stories.cover_photo AS cover_photo,
+           stories.is_complete AS is_complete,
+           stories.text AS story_text,
+           stories.genre AS genre,
+           stories.author_id AS story_author_id,
+           contributions.contributor_id AS contributor_id,
+           contributions.title AS contributor_title,
+           contributions.flavour_text AS contribution_flavour_text,
+           contributions.chapter_photo_url AS chapter_photo,
+           contributions.text AS contribution_text
+    FROM stories
+    JOIN contributions ON story_id = stories.id
+    WHERE stories.id = $1
+    ORDER BY contributions.id;
+    `;
     console.log(query);
     db.query(query, [id])
-      .then(data => {
-        const story = data.rows[0];
-        res.json(story);
+      .then(response => {
+        // story information
+        const {
+          story_title,
+          cover_photo,
+          is_complete,
+          story_text,
+          genre,
+          story_author_id
+        } = response.rows[0];
+
+        // contributions for given story
+        const contributions = [];
+        for (const row of response.rows) {
+          const {
+            contributor_id,
+            contributor_title,
+            contribution_flavour_text,
+            chapter_photo,
+            contribution_text
+          } = row;
+          contributions.push(
+            {
+              contributor_id,
+              contributor_title,
+              contribution_flavour_text,
+              chapter_photo,
+              contribution_text
+            }
+          );
+        }
+
+        // bundle up story and contributions array
+        const data = {
+          story_title,
+          cover_photo,
+          is_complete,
+          story_text,
+          genre,
+          story_author_id,
+          contributions
+        };
+        res.json(data);
       })
       .catch(error => {
         res
           .status(500)
-          .json({error: error.message});
+          .json({ error: error.message });
       });
   });
 
@@ -66,15 +122,15 @@ module.exports = (db) => {
     ];
     console.log(queryString, values);
     db.query(queryString, values)
-    .then(response => {
-      const story = response.rows[0];
-      res.send(story);
-    })
-    .catch(error => {
-      res
-      .send(500)
-      .json({error: error.message});
-    });
+      .then(response => {
+        const story = response.rows[0];
+        res.send(story);
+      })
+      .catch(error => {
+        res
+          .send(500)
+          .json({ error: error.message });
+      });
   });
 
   return router;
