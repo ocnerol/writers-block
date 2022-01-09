@@ -25,7 +25,7 @@ module.exports = (db) => {
       });
   });
 
-  // Read stories (single story)
+  // Read story
   router.get("/:id", (req, res) => {
     const id = req.params.id;
     const query = `SELECT * FROM stories WHERE id = $1;`;
@@ -40,6 +40,11 @@ module.exports = (db) => {
           .status(500)
           .json({error: error.message});
       });
+  });
+
+  // Add story
+  router.get("/new", (req, res) => {
+    res.render('stories_new');
   });
 
   return router;
