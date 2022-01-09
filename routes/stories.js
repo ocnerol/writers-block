@@ -42,9 +42,39 @@ module.exports = (db) => {
       });
   });
 
-  // Add story
+  // Add story (form)
   router.get("/new", (req, res) => {
     res.render('stories_new');
+  });
+
+  // Add story
+  router.post("/new", (req, res) => {
+    const userId = session.userId;
+    const input = req.body;
+    const queryString = `
+    INSERT INTO stories (title, flavour_text, cover_photo, is_complete, text, genre, author_id)
+    VALUES ($1, $2, $3, $4, $5, $6);
+    `;
+    const values = [
+      input.title,
+      input.flavour_text,
+      input.cover_photo,
+      input.is_complete,
+      input.text,
+      input.genre,
+      userId
+    ];
+    console.log(queryString, values);
+    db.query(queryString, values)
+    .then(response => {
+      const story = response.rows[0];
+      res.send(story);
+    })
+    .catch(error => {
+      res
+      .send(500)
+      .json({error: error.message});
+    });
   });
 
   return router;
