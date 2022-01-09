@@ -111,7 +111,7 @@ module.exports = (db) => {
 
   // Add story (form)
   router.get("/new", (req, res) => {
-    res.render('stories_new');
+    res.render('stories_new');  // TODO: make ejs view for new story submission
   });
 
   // Add story
