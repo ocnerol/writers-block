@@ -11,12 +11,15 @@ const router = express.Router();
 module.exports = (db) => {
   // Browse stories
   router.get("/", (req, res) => {
-    const query = `SELECT * FROM stories;`;
+    const query = `
+    SELECT users.name AS author_name, stories.*
+    FROM stories
+    JOIN users ON stories.author_id = users.id;
+    `;
     console.log(query);
     db.query(query)
       .then(data => {
-        const stories = data.rows;
-        res.json({ stories });
+        res.json(data.rows);
       })
       .catch(err => {
         res
