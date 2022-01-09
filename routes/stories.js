@@ -35,13 +35,17 @@ module.exports = (db) => {
            stories.text AS story_text,
            stories.genre AS genre,
            stories.author_id AS story_author_id,
+           users.name AS author_name,
            contributions.contributor_id AS contributor_id,
            contributions.title AS contributor_title,
            contributions.flavour_text AS contribution_flavour_text,
            contributions.chapter_photo_url AS chapter_photo,
-           contributions.text AS contribution_text
+           contributions.text AS contribution_text,
+           contribution_users.name AS contributor_name
     FROM stories
-    JOIN contributions ON story_id = stories.id
+    JOIN contributions ON contributions.story_id = stories.id
+    JOIN users ON users.id = stories.author_id
+    JOIN users AS contribution_users ON contribution_users.id = contributions.contributor_id
     WHERE stories.id = $1
     ORDER BY contributions.id;
     `;
@@ -55,10 +59,11 @@ module.exports = (db) => {
           is_complete,
           story_text,
           genre,
-          story_author_id
+          story_author_id,
+          author_name
         } = response.rows[0];
 
-        // contributions for given story
+        // group info for each contribution
         const contributions = [];
         for (const row of response.rows) {
           const {
@@ -66,11 +71,13 @@ module.exports = (db) => {
             contributor_title,
             contribution_flavour_text,
             chapter_photo,
-            contribution_text
+            contribution_text,
+            contributor_name
           } = row;
           contributions.push(
             {
               contributor_id,
+              contributor_name,
               contributor_title,
               contribution_flavour_text,
               chapter_photo,
@@ -81,6 +88,7 @@ module.exports = (db) => {
 
         // bundle up story and contributions array
         const data = {
+          author_name,
           story_title,
           cover_photo,
           is_complete,
