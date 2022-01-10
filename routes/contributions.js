@@ -8,7 +8,6 @@
 const express = require('express');
 const router  = express.Router();
 
-// In case
 module.exports = (db) => {
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM contributions;`)
@@ -22,15 +21,12 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-  return router;
-};
 
-module.exports = (db) => {
   router.get("/:id", (req, res) => {
     const userID = req.params.id;
     db.query(`
-      SELECT * FROM contributions
-      WHERE contributor_id = $1;
+    SELECT * FROM contributions
+    WHERE contributor_id = $1;
     `, [userID])
     .then(data => {
       const contribution = data.rows;
@@ -38,9 +34,29 @@ module.exports = (db) => {
     })
     .catch(err => {
       res
-        .status(500)
-        .json({ error: err.message });
+      .status(500)
+      .json({ error: err.message });
     });
+  });
+
+  // set contribution_location to zero to delete. Works
+  // curl -X POST -i localhost:8080/contributions/12/delete
+  router.post("/:id/delete", (req, res) => {
+    db.query(`
+      UPDATE contributions
+      SET contribution_location = 0
+      WHERE id = $1
+      RETURNING *;
+    `, [req.params.id])
+      .then((data) => {
+        console.log(data.rows);
+        res.redirect(`/stories/1`);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
   });
   return router;
 };
