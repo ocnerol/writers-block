@@ -14,7 +14,8 @@ module.exports = (db) => {
     const query = `
     SELECT users.name AS author_name, stories.*
     FROM stories
-    JOIN users ON stories.author_id = users.id;
+    JOIN users ON stories.author_id = users.id
+    ORDER BY id DESC;
     `;
     console.log(query);
     db.query(query)
@@ -26,6 +27,46 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
+  });
+
+  // Had to place this before Read Story route bc of route specificity
+  // Add story (form)
+  router.get("/new", (req, res) => {
+    res.render("pages/stories_new");  // TODO: make ejs view for new story submission
+  });
+
+  // Add story
+  router.post("/new", (req, res) => {
+    const userId = req.session.user_id;
+    const input = req.body;
+    const queryString = `
+    INSERT INTO stories (title, flavour_text, cover_photo, is_complete, text, genre, author_id)
+    VALUES ($1, $2, $3, $4, $5, $6, $7)
+    RETURNING *;
+    `;
+    const values = [
+      input.title,
+      input.flavour_text,
+      input.cover_photo,
+      // returns undefined if checkbox is unchecked, ultimately leading to a server error.
+      // Not sure how to fix this through HTML form, so I fixed the error the only way I know how
+      input.is_complete ? input.is_complete : false,
+      input.text,
+      input.genre,
+      userId
+    ];
+    // console.log(queryString, values);
+    // console.log(input);
+    db.query(queryString, values)
+    .then(response => {
+      const story = response.rows[0];
+      res.json(story);
+    })
+    .catch(error => {
+      res
+      .sendStatus(500)
+      .json({ error: error.message });
+    });
   });
 
   // Read story
@@ -109,39 +150,55 @@ module.exports = (db) => {
       });
   });
 
-  // Add story (form)
-  router.get("/new", (req, res) => {
-    res.render('stories_new');  // TODO: make ejs view for new story submission
+  // Get all contributions with a particular story ID
+  router.get("/:id/contributions", (req, res) => {
+    db.query(`
+    SELECT * FROM contributions
+    WHERE story_id = $1;
+    `, [req.params.id])
+    .then((data) => {
+      res.json(data.rows);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
   });
 
-  // Add story
-  router.post("/new", (req, res) => {
-    const userId = session.userId;
+  // Render form to add a new contribution to a story
+  router.get("/:id/contributions/new", (req, res) => {
+    const templateVars = {
+      storyId: req.params.id
+    };
+
+    res.render("pages/contributions_new", templateVars);
+  });
+
+
+  // Handler for new contribution form. Add data to DB
+  router.post("/:id/contributions/new", (req, res) => {
     const input = req.body;
-    const queryString = `
-    INSERT INTO stories (title, flavour_text, cover_photo, is_complete, text, genre, author_id)
-    VALUES ($1, $2, $3, $4, $5, $6);
-    `;
-    const values = [
+    db.query(`
+      INSERT INTO contributions (contributor_id, title, flavour_text, chapter_photo_url, text, story_id)
+      VALUES($1, $2, $3, $4, $5, $6)
+      RETURNING *;
+    `, [
+      req.session.user_id,
       input.title,
       input.flavour_text,
-      input.cover_photo,
-      input.is_complete,
+      input.chapter_photo_url,
       input.text,
-      input.genre,
-      userId
-    ];
-    console.log(queryString, values);
-    db.query(queryString, values)
-      .then(response => {
-        const story = response.rows[0];
-        res.send(story);
-      })
-      .catch(error => {
-        res
-          .send(500)
-          .json({ error: error.message });
-      });
+      req.params.id
+    ])
+    .then(() => {
+      res.redirect(`/stories/${req.params.id}`);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
   });
 
   return router;
