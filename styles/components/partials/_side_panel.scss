@@ -1,0 +1,17 @@
+#side-panel {
+  display: flex;
+  background-color: $gray;
+  height: 100vh;
+  padding: $m-size;
+}
+
+#logo {
+  height: 100px;
+  fill: white;
+  color: white;
+}
+
+#side-panel h2 {
+  color: white;
+  font-size: $m-size;
+}
