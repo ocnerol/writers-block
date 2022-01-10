@@ -1,6 +1,12 @@
-// See: https://sass-lang.com/
+body {
+  max-width: 1440px; // to prevent stretching on ultra wide monitors
+  display: flex;
+}
 
-body,
-html {
-  margin: 0;
+.side-panel-container {
+  width: $side-panel-width;
+}
+
+.main-body {
+  width: $main-body-width;
 }
