@@ -1,9 +1,19 @@
 body#new-story-body {
   justify-content: center;
 }
+
 main#new-story-main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
+}
+
+.story-forms-labels {
+  display: flex;
+  align-items: center;
+}
+
+.story-forms-labels > * {
+  margin: 0;
 }
