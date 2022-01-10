@@ -5,6 +5,7 @@ center entire form
 */
 body#new-story-body {
   justify-content: center;
+  background-color: #E1CF8D;
 }
 
 main#new-story-main {
@@ -12,6 +13,15 @@ main#new-story-main {
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
+}
+
+/*
+center form title
+*/
+h3#new-story-title {
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
 }
 
 /*
