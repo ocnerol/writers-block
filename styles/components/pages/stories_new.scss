@@ -1,0 +1,9 @@
+body#new-story-body {
+  justify-content: center;
+}
+main#new-story-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
