@@ -80,6 +80,7 @@ module.exports = (db) => {
            stories.genre AS genre,
            stories.author_id AS story_author_id,
            users.name AS author_name,
+           contributions.id AS contribution_id,
            contributions.contributor_id AS contributor_id,
            contributions.title AS contributor_title,
            contributions.flavour_text AS contribution_flavour_text,
@@ -111,6 +112,7 @@ module.exports = (db) => {
         const contributions = [];
         for (const row of response.rows) {
           const {
+            contribution_id,
             contributor_id,
             contributor_title,
             contribution_flavour_text,
@@ -120,6 +122,7 @@ module.exports = (db) => {
           } = row;
           contributions.push(
             {
+              contribution_id,
               contributor_id,
               contributor_name,
               contributor_title,
