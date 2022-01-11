@@ -49,3 +49,7 @@ set  form labels and forms side-by-side and center vertically
   border: none;
   border-radius: 0px;
 }
+
+.form-group > * {
+  margin: 0.5rem 0rem;
+}
