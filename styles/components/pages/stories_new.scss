@@ -131,3 +131,19 @@ form footer style
 #new-story-genre {
   display: flex;
 }
+
+#new-story-genre {
+  display: flex;
+  align-items: center;
+}
+
+
+#new-story-genre > * {
+  min-width: fit-content;
+  margin-bottom: 0;
+  margin-right: 2rem;
+}
+
+select.form-control {
+  width: 15vw;
+}
