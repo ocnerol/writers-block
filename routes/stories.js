@@ -69,7 +69,15 @@ module.exports = (db) => {
     });
   });
 
-  // Read story
+  // Read story (/stories/1)
+
+  router.get('/story', (req, res) => {
+    res.render("pages/story_page", {id: req.params.id });
+  });
+
+
+
+
   router.get("/:id", (req, res) => {
     const id = req.params.id;
     const query = `
@@ -144,6 +152,12 @@ module.exports = (db) => {
           story_author_id,
           contributions
         };
+
+        //const authorName = data.author_name
+        //const templateVars = {authorName};
+        //console.log('templateVars---->', templateVars)
+        //console.log('data---->', data)
+        //res.render("pages/story_page", templateVars);
         res.json(data);
       })
       .catch(error => {

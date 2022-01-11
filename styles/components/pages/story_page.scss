@@ -1,0 +1,109 @@
+// See: https://sass-lang.com/
+
+/* [story_page.scss] */
+
+body,
+html {
+  margin: 0;
+  font-size: 62.5%; //so we can use REM units. 1rem = 10px, 1.6rem = 16px, etc..
+}
+
+
+.story-container {
+  font-family: 'Source Serif Pro', Times, serif;
+  font-size: 2.4rem;
+  padding-top: 13.2rem;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.story-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.title-author-label {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.6rem;
+}
+
+
+.wrapper-story {
+  margin: 0 auto;
+  max-width: 75%;
+}
+
+
+#author {
+  font-size: 1.4rem;
+  margin: 0.5rem;
+  padding-left: 1rem;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+}
+#genre {
+  font-size: 1.4rem;
+  margin: 0.5rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+}
+
+#complete {
+  font-size: 1.4rem;
+  margin: 0.5rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+}
+
+#story-text {
+  font-size: 1.6rem;
+}
+
+#title {
+  font-weight: bold;
+
+}
+
+.add-block-btn {
+  display: flex;
+  justify-content: end;
+}
+
+.add-block-btn p {
+  margin: 0.2rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  font-size: 1.4rem;
+  color: $purp;
+  padding-left: 1rem;
+}
+
+
+
+
+// // Colours
+// $gray: #636363;
+// $white: #ffffff;
+// $black: #000000;
+// $purp: #6117ff;
+// $gold: #E1CF8D;
+
+// // Spacing
+// $s-size: 1.2rem;
+// $m-size: 1.6rem;
+// $l-size: 3.2rem;
+// $xl-size: 4.8rem;
+// $mobile-breakpoint: 415px;
+
+// // Panel Widths
+// $side-panel-width: 37.5%;
+// $main-body-width: 62.5%;
