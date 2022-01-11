@@ -90,3 +90,16 @@ form footer style
 #story-form-footer > * {
   margin-left: 1rem;
 }
+
+#new-story-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  color: $white;
+}
+
+#new-story-header * {
+  margin: 0;
+}
+
+
