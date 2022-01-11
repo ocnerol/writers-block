@@ -78,6 +78,7 @@ html {
 
 .add-block-btn p {
   margin: 0.2rem;
+  margin-bottom: 3rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   text-transform: uppercase;
@@ -86,6 +87,58 @@ html {
   color: $purp;
   padding-left: 1rem;
 }
+
+
+//------------------------------------------ CONTRIBUTION SECTION-------------------------------------
+
+.contribution-container {
+  border-style: solid;
+  border-width: 0.1rem;
+  border-color: 	#D3D3D3;
+  border-radius: 2rem;
+  box-shadow: 0 0 1rem #ccc;
+  display: flex;
+  margin-bottom: 3rem ;
+}
+
+.contribution-content {
+  padding: 2rem 2rem;
+}
+
+.contribution-heading {
+  display: flex;
+}
+.contributor-name {
+  font-size: 1.4rem;
+  margin: 0.5rem;
+  padding-left: 1rem;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+}
+
+.contribution-title {
+  font-weight: bold;
+}
+
+
+.contribution-flavour {
+  font-size: 1.6rem;
+}
+
+.upvote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2rem;
+
+}
+i {
+  color: $purp;
+}
+
+
+
 
 
 
