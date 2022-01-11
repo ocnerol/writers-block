@@ -12,18 +12,31 @@
   color: $white;
 }
 
-/* Logo: Wb; */
-.side-panel-top h2 {
-  font-size: 10rem;
-  margin-bottom: $xxl-size;
-  font-weight: 700;
-}
 
-/*Writer's Block text underneath logo*/
-.side-panel-top h3 {
-  font-size: $l-size;
-  font-family: 'Spartan', Arial, sans-serif;
-  margin-left: 2.4rem;
+.side-panel-top {
+  /* Logo: Wb; */
+  h2 {
+    font-size: 10rem;
+    margin-bottom: $xxl-size;
+    font-weight: 700;
+  }
+
+  /*Logo: Wb;*/
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a:hover {
+    color: inherit;
+  }
+
+  /*Writer's Block text underneath logo*/
+  h3 {
+    font-size: $l-size;
+    font-family: 'Spartan', Arial, sans-serif;
+    margin-left: 2.4rem;
+  }
 }
 
 /*Story title header at bottom of side panel*/
@@ -49,7 +62,9 @@
   letter-spacing: 0.2rem;
 }
 
+/* buttons when not logged in */
 .register-login {
   display: flex;
   column-gap: $s-size;
 }
+

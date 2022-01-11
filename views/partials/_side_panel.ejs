@@ -1,6 +1,6 @@
 <div id="side-panel">
   <div class="side-panel-top">
-    <h2>Wb;</h2>
+    <h2><a href="/">Wb;</a></h2>
     <h3>Writer's Block</h3>
   </div>
 
@@ -8,7 +8,7 @@
     <h2><%= stories[0].title %></h2>
     <p><%= stories[0].flavour_text %></p>
     <% if (userName) { %>
-      <form method="POST" action="/logout">
+      <form method="POST" action="/logout" class="register-login">
         <button>Logout</button>
       </form>
     <% } else { %>

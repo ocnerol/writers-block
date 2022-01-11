@@ -14,3 +14,47 @@ body {
   width: $main-body-width;
 }
 
+@media only screen and (max-width: $desktop-breakpoint) {
+  body {
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .side-panel-container {
+    position: static;
+    width: 100vw;
+
+    #side-panel {
+      height: 45vh;
+      width: 100%;
+      padding: $m-size;
+    }
+
+    .register-login {
+      position: fixed;
+      top: $l-size;
+      right: $l-size;
+    }
+
+    .side-panel-top h2 {
+      margin-bottom: $m-size;
+    }
+
+    .side-panel-bottom p {
+      margin: 0;
+    }
+  }
+
+  .main-body {
+    margin: 0;
+    width: 100vw;
+
+    .story-details {
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      margin-bottom: $s-size;
+    }
+  }
+}
