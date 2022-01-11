@@ -93,6 +93,12 @@
     align-items: flex-start;
     margin-bottom: $s-size;
 
+    .name-title {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
     /*Smaller story title size*/
     .homepage-story-title {
       font-size: 2.1rem;
