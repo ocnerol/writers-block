@@ -34,7 +34,7 @@ const loadStory = function() {
       $("#genre").text(response.genre)
       $("#complete").text(response.is_complete === false ? '(IN PROGRESS)' : '(COMPLETE)')
       $("#story-text").text(response.story_text)
-      $("#all-contributions").text(renderContributions(response.contributions))
+      $("#all-contributions").text(renderContributionsPreview(response.contributions))
     })
     .catch((error) => {
       console.log('Error while loading story', error);
@@ -42,7 +42,7 @@ const loadStory = function() {
 };
 
 
-const createContributionElement = function (contribution) {
+const createContributionPreviewElement = function (contribution) {
   const {
     contribution_id,
     contribution_title,
@@ -52,26 +52,27 @@ const createContributionElement = function (contribution) {
     upvote_count
    } = contribution;
 
-   const contributionTitle = `<h3 class= "contribution-title${contribution_title}</h3>`;
+   const contributionTitle = `<h3 class="contribution-title"${contribution_title}</h3>`;
    const contributorName =`<p class="contributor-name">${contributor_name}</p>`;
    const flavourText = `<div class="contribution-flavour">${contribution_flavour_text}</div>`;
    const upVoteCount = `<div class="upvote"> <i class="fas fa-chevron-up"></i>
-   <tag>0</tag>`
-   const flavourText = `<div class="contribution-flavour">${contribution_flavour_text}</div>`;
+   <tag>${upvote_count}</tag> <i class="fas fa-chevron-down"></i>`
 
    const $contribution = $(`
    <div class="contribution-container">
    <div class="contribution-content">
-   <div class ="contribution-heading">
-   ${contributionTitle} ${contributorName} </div> ${flavourText}</div> </div>
+   <div class="contribution-heading">
+   ${contributionTitle} ${contributorName} </div> ${flavourText}</div> ${upVoteCount}</div></div>
    `)
 
 
+   return $contribution;
+
 }
 
-const renderContributions = function(contributions) {
+const renderContributionsPreview = function(contributions) {
   for (let contribution of contributions) {
-    const $newContribution = createContributionElement(contribution);
+    const $newContribution = createContributionPreviewElement(contribution);
     $("#all-contributions").append($newContribution); //adds new contribution to the bottom of the contribution container
   }
 };
