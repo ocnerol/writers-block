@@ -43,3 +43,9 @@ set  form labels and forms side-by-side and center vertically
 .story-forms-labels > * {
   margin: 0;
 }
+
+.form-control {
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 0px;
+}
