@@ -55,3 +55,8 @@ set  form labels and forms side-by-side and center vertically
 .form-group > * {
   margin: 0.5rem 0rem;
 }
+
+label.new-story {
+  min-width: 25%;
+  text-align: center;
+}
