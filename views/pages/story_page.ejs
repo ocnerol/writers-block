@@ -27,11 +27,13 @@
 
 </head>
 
-<body>
+<body data-story-id="<%- id %>">
+<!-- <body> -->
   <div class="side-panel-container">
     <%- include('../partials/_side_panel') %>
   </div>
 
+  <!--------------- SPECIFIC STORY FULL ------------------------------------------------------------->
 
   <div class="main-body story-container">
     <div class="wrapper-story">
@@ -44,42 +46,96 @@
         <p id='genre'></p>
       </div>
       <p id='story-text'></p>
+  <!--------------- BLOCK FORM------------------------------------------------------------->
+  <section class="new-block hidden">
+
+
+
+              <form class="form-group" id="new-post-form" action="/tweets" method="POST">
+                <label for="block-text">What are you humming about?</label>
+
+                <textarea name="text" id="tweet-text" rows="1"></textarea>
+
+                <div class="form-footer">
+                  <button class="tweet-button" type="submit">Submit block</button>
+                  <output name="counter" class="counter" for="tweet-text">140</output>
+                </div>
+              </form>
+            </section>
+  <!--------------- BLOCK FORM------------------------------------------------------------->
+
       <div class='add-block-btn'>
         <i class="fas fa-plus"></i>
-        <p>Add a block</p></div>
+        <p>Add a block</p>
+      </div>
       <div>
     </div>
 
 
 
-<div id="all-contributions">
 
-  <!-- <div class ="contribution-container">
-    <div class="contribution-content">
-      <div class ="contribution-heading">
-        <h3 class= "contribution-title">"Contribution 1 to Story 1"</h3>
-        <p class="contributor-name">Mela Scanes</p>
-       </div>
-       <div class="contribution-flavour">"By Twenty"</div>
-    </div>
-    <div class="upvote"> <i class="fas fa-chevron-up"></i>
-      <tag>0</tag>
-      <i class="fas fa-chevron-down"></i>
-    </div>
-  </div> -->
 
+
+<!--------------- CONTRIBUTION PREVIEW TILES---------------------------------------------------->
+    <div id="all-contributions">
+<!--
+      <div class ="contribution-container">
+        <div class="contribution-content">
+          <div class="contribution-heading">
+            <h3 class= "contribution-title">More like the Bard and His Lute</h3>
+            <p class="contributor-name"> - Jones Gallagher</p>
+          </div>
+          <div class="contribution-flavour">Weary and heart sick, the youth gently released his burden and silently prepared a place of comfort as his last duty to the loved one. Gathering fallen pine needles, he made a soft cushion and tenderly lifted his old mother onto it.<br> <br>He wrapped her padded coat more closely about the stooping shoulders and with tearful eyes and an aching heart he said farewell. Weary and heart sick, the youth gently released his burden and silently prepared a place of comfort as his last duty to the loved one. Gathering fallen pine needles, he made a soft cushion and tenderly lifted his old mother onto it. Hew rapped her padded coat more closely about the stooping shoulders and with tearful eyes and an aching heart he said farewell.
+          </div>
+          </div>
+        <div class="upvote"> <i class="fas fa-chevron-up"></i>
+          <tag>0</tag>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div> -->
+    </div>
+
+
+
+<!--------------- FULL CONTRIBUTION COMPONENT ---------------------------------------------------->
+
+<div id="full-contribution-view">
+<!--
+  <div class ="full-contribution-container">
+    <div class="full-contribution-content">
+      <div class="contribution-heading">
+        <h3 class= "contribution-title">More like the Bard and His Lute</h3>
+        <p class="contributor-name"> - Jones Gallagher</p>
+      </div>
+      <div class="contribution-text">Weary and heart sick, the youth gently released his burden and silently prepared a place of comfort as his last duty to the loved one. Gathering fallen pine needles, he made a soft cushion and tenderly lifted his old mother onto it.<br> <br>He wrapped her padded coat more closely about the stooping shoulders and with tearful eyes and an aching heart he said farewell. Weary and heart sick, the youth gently released his burden and silently prepared a place of comfort as his last duty to the loved one. Gathering fallen pine needles, he made a soft cushion and tenderly lifted his old mother onto it. Hew rapped her padded coat more closely about the stooping shoulders and with tearful eyes and an aching heart he said farewell. <br> <br>
+      He wrapped her padded coat more closely about the stooping shoulders and with tearful eyes and an aching heart he said farewell. Weary and heart sick, the youth gently released his burden and silently prepared a place of comfort as his last duty to the loved one. Gathering fallen pine needles, he made a soft cushion and tenderly lifted his old mother onto it. Hew rapped her padded coat more closely about the stooping shoulders and with tearful eyes and an aching heart he said farewell.<br> <br>
+      Gathering fallen pine needles, he made a soft cushion and tenderly lifted his old mother onto it.<br> <br>He wrapped her padded coat more closely about the stooping shoulders and with tearful eyes and an aching heart he said farewell. Weary and heart sick, the youth gently released his burden and silently prepared a place of comfort as his last duty to the loved one. Gathering fallen pine needles, he made a soft cushion and tenderly lifted his old mother onto it. Hew rapped her padded coat more closely about the stooping shoulders and with tearful eyes and an aching heart he said farewell.
+
+      </div>
+
+    <div class ="full-contribution-footer">
+       <div class="upvote" id="upvote-horizontal">
+         <i class="fas fa-chevron-up">
+
+         </i><tag>0</tag>
+         <i class="fas fa-chevron-down"></i>
+        </div>
+    </div> -->
+  </div>
+    <div class='back-to-blocks'>
+      <i class="fas fa-chevron-left"></i>
+      <p>Back to blocks</p>
+    </div>
+
+  </div>
+
+
+
+  </div>
 </div>
 
 
-  </div>
-  </div>
-
-
-  </div>
-
-
-
-
+</div>
 
 
 

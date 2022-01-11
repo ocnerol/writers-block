@@ -71,7 +71,7 @@ module.exports = (db) => {
 
   // Read story (/stories/1)
 
-  router.get('/story', (req, res) => {
+  router.get('/:id/:slug', (req, res) => {
     res.render("pages/story_page", {id: req.params.id });
   });
 
