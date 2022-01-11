@@ -34,6 +34,10 @@ set  form labels and forms side-by-side and center vertically
 .story-forms-labels {
   display: flex;
   align-items: center;
+  font-family: 'Source Sans Pro', Times, serif;
+  font-weight: bold;
+  font-size: 1.6rem;
+  color: #FFFFFF;
 }
 
 .story-forms-labels > * {
