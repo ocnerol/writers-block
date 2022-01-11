@@ -1,12 +1,16 @@
 body {
-  //max-width: 1440px; // to prevent stretching on ultra wide monitors
+  // max-width: 1440px; // to prevent stretching on ultra wide monitors
   display: flex;
 }
 
 .side-panel-container {
   width: $side-panel-width;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .main-body {
+  margin-left: $side-panel-width;
   width: $main-body-width;
 }

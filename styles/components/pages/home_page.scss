@@ -1,21 +1,58 @@
-// See: https://sass-lang.com/
+/*Homepage scss*/
+.homepage-wrapper {
+  font-family: 'Roboto', Helvetica, sans-serif;
+  margin: auto;
+  max-width: 75%;
+}
 
+// User greeting
+.text-body h1 {
+  border-bottom: 1px solid black;
+  font-family: $serif;
+  font-weight: 700;
+  margin: 10rem auto;
+  padding-bottom: 2rem;
+}
 
+// title, author, progress, genre
+.story-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 
-// Colours
-$gray: #636363;
-$white: #ffffff;
-$black: #000000;
-$purp: #6117ff;
-$gold: #E1CF8D;
+  .name-title {
+    display: flex;
+    align-items: flex-end;
+    column-gap: $m-size;
+  }
 
-// Spacing
-$s-size: 1.2rem;
-$m-size: 1.6rem;
-$l-size: 3.2rem;
-$xl-size: 4.8rem;
-$mobile-breakpoint: 415px;
+  .status-genre {
+    display: flex;
+    column-gap: $m-size;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+  }
 
-// Panel Widths
-$side-panel-width: 37.5%;
-$main-body-width: 62.5%;
+  h2 {
+    font-family: $serif;
+  }
+}
+
+.genre {
+  font-weight: 900;
+}
+
+.homepage-title {
+  font-size: $m-size;
+}
+
+.homepage-author {
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+.homepage-flavourtext {
+  font-family: $serif;
+  font-size: $s-size;
+}
+
