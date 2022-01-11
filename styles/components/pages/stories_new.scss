@@ -74,6 +74,8 @@ form footer style
 
 #story-form-footer {
   display: flex;
+  justify-content: flex-end;
+  font-size: 0.5rem;
 }
 
 .new-story-button {
@@ -84,4 +86,8 @@ form footer style
   border-width: 0.09rem;
   border-color: black;
   font-family: 'Roboto', Times, serif;
+}
+
+#story-form-footer > * {
+  margin-left: 1rem;
 }
