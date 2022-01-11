@@ -52,7 +52,7 @@ const createContributionPreviewElement = function (contribution) {
     upvote_count
    } = contribution;
 
-   const contributionTitle = `<h3 class="contribution-title"${contribution_title}</h3>`;
+   const contributionTitle = `<h3 class="contribution-title">${contribution_title}</h3>`;
    const contributorName =`<p class="contributor-name">${contributor_name}</p>`;
    const flavourText = `<div class="contribution-flavour">${contribution_flavour_text}</div>`;
    const upVoteCount = `<div class="upvote"> <i class="fas fa-chevron-up"></i>
