@@ -9,6 +9,8 @@ const app = express();
 const morgan = require("morgan");
 const cookieSession = require('cookie-session');
 
+const database = require('./routes/database')
+
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
@@ -56,8 +58,14 @@ app.use("/stories", storiesRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get("/", (req, res) => {
-  res.render("index");
+app.get("/", async (req, res) => {
+  const stories = await database.getAllStories(db);
+  console.log(stories[0]);
+  const templateVars = {
+    userID: req.session.user_id,
+    stories
+  }
+  res.render("index", templateVars);
 });
 
 app.listen(PORT, () => {
