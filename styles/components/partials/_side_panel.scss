@@ -1,19 +1,52 @@
+/* _side_panel.scss */
+
+/* styling for the whole side-panel div */
 #side-panel {
   display: flex;
-  background-color: $gray;
+  flex-direction: column;
+  font-family: $serif;
+  justify-content: space-between;
+  background-color: $purp;
   height: 100vh;
-  padding: $m-size;
+  padding: $l-size;
+  color: $white;
 }
 
-#logo {
-  height: 100px;
-  fill: white;
-  color: white;
+/* Logo: Wb; */
+.side-panel-top h2 {
+  font-size: 10rem;
+  margin-bottom: $xxl-size;
+  font-weight: 700;
 }
 
-#side-panel h2 {
-  color: white;
-  font-size: $m-size;
+/*Writer's Block text underneath logo*/
+.side-panel-top h3 {
+  font-size: $l-size;
+  font-family: 'Spartan', Arial, sans-serif;
+  margin-left: 2.4rem;
+}
+
+/*Story title header at bottom of side panel*/
+.side-panel-bottom h2 {
+  font-size: $l-size;
+}
+
+/*Flavour text at bottom of side panel*/
+.side-panel-bottom p {
+  margin-bottom: $xxl-size;
+  font-size: $s-size;
+  font-style: italic;
+  width: 80%;
+}
+
+/*Side panel login/logout button*/
+.side-panel-bottom button {
+  background: $gold;
+  border-radius: 15px;
+  border: none;
+  height: 3.0rem;
+  width: 7.5rem;
+  letter-spacing: 0.2rem;
 }
 
 .register-login {

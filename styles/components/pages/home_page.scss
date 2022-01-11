@@ -1,0 +1,58 @@
+/*Homepage scss*/
+.homepage-wrapper {
+  font-family: 'Roboto', Helvetica, sans-serif;
+  margin: auto;
+  max-width: 75%;
+}
+
+// User greeting
+.text-body h1 {
+  border-bottom: 1px solid black;
+  font-family: $serif;
+  font-weight: 700;
+  margin: 10rem auto;
+  padding-bottom: 2rem;
+}
+
+// title, author, progress, genre
+.story-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  .name-title {
+    display: flex;
+    align-items: flex-end;
+    column-gap: $m-size;
+  }
+
+  .status-genre {
+    display: flex;
+    column-gap: $m-size;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+  }
+
+  h2 {
+    font-family: $serif;
+  }
+}
+
+.genre {
+  font-weight: 900;
+}
+
+.homepage-title {
+  font-size: $m-size;
+}
+
+.homepage-author {
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+.homepage-flavourtext {
+  font-family: $serif;
+  font-size: $s-size;
+}
+
