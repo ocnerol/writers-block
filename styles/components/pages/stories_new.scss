@@ -75,3 +75,12 @@ form footer style
 #story-form-footer {
   display: flex;
 }
+
+.new-story-button {
+  border-radius: 50px;
+  background-color: inherit;
+  color: black;
+  font-weight: bold;
+  border-width: 0.09rem;
+  border-color: black;
+}
