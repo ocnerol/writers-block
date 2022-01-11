@@ -1,9 +1,9 @@
 /* stories_new.ejs */
-
 /*
 center entire form
 */
 body#new-story-body {
+  flex-direction: column;
   min-width: max-content;
   justify-content: center;
   align-items: center;
@@ -15,9 +15,9 @@ main#new-story-main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 100vh;
   width: 85%;
   min-width: fit-content;
+  margin: 0px;
 }
 
 /*
@@ -38,7 +38,7 @@ set  form labels and forms side-by-side and center vertically
 .story-forms-labels {
   display: flex;
   align-items: center;
-  font-family: 'Source Sans Pro', Times, serif;
+  font-family: "Source Sans Pro", Times, serif;
   font-weight: bold;
   font-size: 1.6rem;
   color: #FFFFFF;
@@ -71,7 +71,6 @@ label.new-story {
 /*
 form footer style
 */
-
 #story-form-footer {
   display: flex;
   justify-content: flex-end;
@@ -85,7 +84,7 @@ form footer style
   font-weight: bold;
   border-width: 0.09rem;
   border-color: black;
-  font-family: 'Roboto', Times, serif;
+  font-family: "Roboto", Times, serif;
 }
 
 #story-form-footer > * {
