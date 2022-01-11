@@ -22,6 +22,9 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Source+Serif+Pro:wght@400;600;700&family=Spartan:wght@500;700&display=swap');
   </style>
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body id="body">
@@ -32,7 +35,8 @@
 
   <div class="main-body text-body">
     <div class="homepage-wrapper">
-      <h1>Welcome<%= userName && `, ${userName}` %>!</h1>
+        <h1>Welcome<%= userName && `, ${userName}` %>! <a href="/stories/new" title="Create a Story"><i class="fas fa-pencil-alt fa-lg"></i></a></h1>
+
 
       <% for(let story of stories) { %>
           <a href="/stories/<%= story.id %>" class="story-tile">

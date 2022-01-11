@@ -12,6 +12,12 @@
   font-weight: 700;
   margin: 10rem auto;
   padding-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    color: inherit;
+  }
 }
 
 /*title, author, progress, genre*/
