@@ -82,11 +82,12 @@ module.exports = (db) => {
            users.name AS author_name,
            contributions.id AS contribution_id,
            contributions.contributor_id AS contributor_id,
-           contributions.title AS contributor_title,
+           contribution_users.name AS contributor_name,
+           contributions.title AS contribution_title,
            contributions.flavour_text AS contribution_flavour_text,
            contributions.chapter_photo_url AS chapter_photo,
            contributions.text AS contribution_text,
-           contribution_users.name AS contributor_name
+           contributions.upvote_count AS contribution_upvote_count
     FROM stories
     JOIN contributions ON contributions.story_id = stories.id
     JOIN users ON users.id = stories.author_id
@@ -114,21 +115,23 @@ module.exports = (db) => {
           const {
             contribution_id,
             contributor_id,
-            contributor_title,
+            contribution_title,
             contribution_flavour_text,
             chapter_photo,
             contribution_text,
-            contributor_name
+            contributor_name,
+            contribution_upvote_count
           } = row;
           contributions.push(
             {
               contribution_id,
               contributor_id,
               contributor_name,
-              contributor_title,
+              contribution_title,
               contribution_flavour_text,
               chapter_photo,
-              contribution_text
+              contribution_text,
+              contribution_upvote_count
             }
           );
         }
