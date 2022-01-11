@@ -147,3 +147,15 @@ form footer style
 select.form-control {
   width: 15vw;
 }
+
+#new-story-buttons > * {
+  font-size: 0.85rem;
+  padding: 0.5vw 2vw;
+  margin-left: 1vw;
+}
+
+@media only screen and (min-width: 1024px) {
+  #new-story-buttons > * {
+  font-size: 1rem;
+  }
+}
