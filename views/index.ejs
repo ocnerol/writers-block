@@ -26,19 +26,28 @@
     <%- include('./partials/_side_panel') %>
   </div>
 
-  <div class="main-body">
-    <h1>STORY CREATOR</h1>
+  <div class="main-body text-body">
+    <div class="homepage-wrapper">
+      <h1>Welcome<%= userName && `, ${userName}` %>!</h1>
 
+      <% for(let story of stories) { %>
+            <div class="story-details">
+              <div class="name-title">
+                <h2 class="homepage-title"><%= story.title %></h2>
+                <p class="homepage-author"><%= story.author_name %></p>
+              </div>
+              <div class="status-genre">
+                <p class="story-status">
+                  <%= story.is_complete ? '(Complete)' : '(In Progress)' %>
+                </p>
+                <p class="genre"><%= story.genre%></p>
+              </div>
+            </div>
+            <p class="homepage-flavourtext">
+              <%= story.flavour_text%>
+            </p>
+      <% } %>
   </div>
-
-
-
-
-
-
-
-
-
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

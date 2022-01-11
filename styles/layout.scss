@@ -1,5 +1,4 @@
 body {
-  max-width: 1440px; // to prevent stretching on ultra wide monitors
   display: flex;
 }
 
@@ -10,3 +9,4 @@ body {
 .main-body {
   width: $main-body-width;
 }
+

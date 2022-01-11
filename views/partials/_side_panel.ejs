@@ -1,12 +1,29 @@
 <div id="side-panel">
-  <img src="/images/book-reader-solid.svg" id="logo" alt="Logo" fill="white">
+  <div class="side-panel-top">
+    <h2>Wb;</h2>
+    <h3>Writer's Block</h3>
+  </div>
 
-  <h2>LOGO</h2>
-
-
+  <div class="side-panel-bottom">
+    <h2><%= stories[0].title %></h2>
+    <p><%= stories[0].flavour_text %></p>
+    <% if (userName) { %>
+      <form method="POST" action="/logout">
+        <button>Logout</button>
+      </form>
+    <% } else { %>
+      <div class="register-login">
+        <form method="POST" action="/register">
+          <button>Register</button>
+        </form>
+        <form method="POST" action="/login">
+          <button>Login</button>
+        </form>
+      </div>
+    <% } %>
+  </div>
 
 
 
 </div>
-
 
