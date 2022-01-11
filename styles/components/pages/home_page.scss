@@ -5,7 +5,7 @@
   max-width: 75%;
 }
 
-// User greeting
+/*User greeting*/
 .text-body h1 {
   border-bottom: 1px solid black;
   font-family: $serif;
@@ -14,18 +14,20 @@
   padding-bottom: 2rem;
 }
 
-// title, author, progress, genre
+/*title, author, progress, genre*/
 .story-details {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 
+  /*author & title div*/
   .name-title {
     display: flex;
     align-items: flex-end;
     column-gap: $m-size;
   }
 
+  /*status & genre div*/
   .status-genre {
     display: flex;
     column-gap: $m-size;
@@ -33,6 +35,7 @@
     letter-spacing: 0.2rem;
   }
 
+  /*story title*/
   h2 {
     font-family: $serif;
   }
@@ -42,10 +45,12 @@
   font-weight: 900;
 }
 
-.homepage-title {
+/*story title*/
+.homepage-story-title {
   font-size: $m-size;
 }
 
+/*author name above story*/
 .homepage-author {
   text-transform: uppercase;
   letter-spacing: 0.2rem;
@@ -57,3 +62,24 @@
   margin-bottom: $xl-size;
 }
 
+/*selector for <a> tag for each story on homepage directing to individual story page*/
+.story-tile {
+  text-decoration: none;
+  color: inherit;
+}
+
+/*responsive design for homepage*/
+@media only screen and (max-width: $desktop-breakpoint) {
+  /*Remove the single line layout for Title, Author, Status, Genre*/
+  .story-details {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-bottom: $s-size;
+
+    /*Smaller story title size*/
+    .homepage-story-title {
+      font-size: 2.1rem;
+    }
+  }
+}

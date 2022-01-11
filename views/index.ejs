@@ -35,9 +35,10 @@
       <h1>Welcome<%= userName && `, ${userName}` %>!</h1>
 
       <% for(let story of stories) { %>
+          <a href="/stories/<%= story.id %>" class="story-tile">
             <div class="story-details">
               <div class="name-title">
-                <h2 class="homepage-title"><%= story.title %></h2>
+                <h2 class="homepage-story-title"><%= story.title %></h2>
                 <p class="homepage-author"><%= story.author_name %></p>
               </div>
               <div class="status-genre">
@@ -50,6 +51,7 @@
             <p class="homepage-flavourtext">
               <%= story.flavour_text%>
             </p>
+          </a>
       <% } %>
   </div>
 

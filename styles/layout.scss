@@ -10,51 +10,64 @@ body {
 }
 
 .main-body {
+  /*needs left margin otherwise would position itself underneath side panel*/
   margin-left: $side-panel-width;
   width: $main-body-width;
 }
 
 @media only screen and (max-width: $desktop-breakpoint) {
+  /*Remove side by side layout*/
   body {
-    background-color: red;
     display: flex;
     flex-direction: column;
   }
 
+  /*SIDE PANEL RESPONSIVE DESIGN*/
+  /*Remove fixed positioning*/
   .side-panel-container {
     position: static;
     width: 100vw;
 
     #side-panel {
-      height: 45vh;
-      width: 100%;
+      height: 50vh;
       padding: $m-size;
     }
 
+    /*login/logout buttons*/
     .register-login {
-      position: fixed;
+      position: absolute;
       top: $l-size;
       right: $l-size;
     }
 
+    /*Wb; Logo*/
     .side-panel-top h2 {
       margin-bottom: $m-size;
     }
 
+    /*Feature story flavour text*/
     .side-panel-bottom p {
       margin: 0;
     }
   }
 
+  /*MAIN BODY RESPONSIVE DESIGN*/
   .main-body {
     margin: 0;
     width: 100vw;
+  }
 
-    .story-details {
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-start;
-      margin-bottom: $s-size;
-    }
+}
+
+/*For even smaller screens*/
+@media only screen and (max-width: 405px) {
+  /*Remove side panel app name 'Writer's Block' for aesthetics*/
+  .side-panel-top h3 {
+    visibility: hidden;
+  }
+
+  /*add margin to top of logo so register/login buttons do not overlap with logo*/
+  .side-panel-top h2 {
+    margin-top: $l-size;
   }
 }
