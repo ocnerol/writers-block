@@ -8,7 +8,8 @@
     <h2><%= stories[2].title %></h2>
     <p><%= stories[2].flavour_text %></p>
     <% if (userName) { %>
-      <form method="POST" action="/logout" class="register-login">
+      <form method="POST" action="/logout" class="register-login logged-in">
+        <p>Hello, <%= userName %>!</p>
         <button>Logout</button>
       </form>
     <% } else { %>

@@ -69,3 +69,12 @@
   column-gap: $s-size;
 }
 
+.logged-in {
+  flex-direction: column;
+  justify-content: flex-end;
+
+  p {
+    margin-bottom: $s-size;
+  }
+}
+
