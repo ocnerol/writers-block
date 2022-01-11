@@ -15,7 +15,7 @@
   </style>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap');
-    </style>
+  </style>
 </head>
 
 <body id="new-story-body">
@@ -37,34 +37,36 @@
           <input class="form-control" type="text" name="cover_photo">
         </div>
         <input class="form-control" id="form-story-text" type="text" name="text">
-        <select class="form-control" name="genre" required>
-          <option value="" disabled selected hidden>Select a genre</option>
-          <option value="adventure">Adventure</option>
-          <option value="children's">Children's</option>
-          <option value="comedy">Comedy</option>
-          <option value="coming of age">Coming of age</option>
-          <option value="fantasy">Fantasy</option>
-          <option value="folklore">Folklore</option>
-          <option value="historical">Historical</option>
-          <option value="horror">Horror</option>
-          <option value="political">Political</option>
-          <option value="psychological">Psychological</option>
-          <option value="romance">Romance</option>
-          <option value="satire">Satire</option>
-          <option value="science fiction">Science Fiction</option>
-          <option value="spy">Spy</option>
-          <option value="thriller">Thriller</option>
-          <option value="western">Western</option>
-          <option value="yound adult">Young Adult</option>
-        </select>
-        <div class="form-check" style="margin: 1em">
-          <input class="form-check-input" type="checkbox" name="is_complete" value="true">
-          <label class="form-check-label" for="is_complete">
-            Mark story as completed and prevent any new contributions?
-          </label>
+        <div id="story-form-footer">
+          <select class="form-control" name="genre" required>
+            <option value="" disabled selected hidden>Select a genre</option>
+            <option value="adventure">Adventure</option>
+            <option value="children's">Children's</option>
+            <option value="comedy">Comedy</option>
+            <option value="coming of age">Coming of age</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="folklore">Folklore</option>
+            <option value="historical">Historical</option>
+            <option value="horror">Horror</option>
+            <option value="political">Political</option>
+            <option value="psychological">Psychological</option>
+            <option value="romance">Romance</option>
+            <option value="satire">Satire</option>
+            <option value="science fiction">Science Fiction</option>
+            <option value="spy">Spy</option>
+            <option value="thriller">Thriller</option>
+            <option value="western">Western</option>
+            <option value="yound adult">Young Adult</option>
+          </select>
+          <div class="form-check" style="margin: 1em">
+            <input class="form-check-input" type="checkbox" name="is_complete" value="true">
+            <label class="form-check-label" for="is_complete">
+              Mark story as completed and prevent any new contributions?
+            </label>
+          </div>
+          <button class="btn btn-secondary">Save</button>
+          <button type="submit" class="btn btn-secondary">Submit</button>
         </div>
-        <button class="btn btn-secondary">Save</button>
-        <button type="submit" class="btn btn-secondary">Submit</button>
       </div>
     </form>
   </main>
