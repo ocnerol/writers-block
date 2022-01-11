@@ -15,6 +15,8 @@ const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
 
+const database = require('./routes/database')
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -56,8 +58,14 @@ app.use("/stories", storiesRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get("/", (req, res) => {
-  res.render("index");
+app.get("/", async (req, res) => {
+  const userName = await database.getAllUsers(db, req.session.user_id);
+  const stories = await database.getAllStories(db);
+  const templateVars = {
+    userName,
+    stories
+  }
+  res.render("index", templateVars);
 });
 
 app.listen(PORT, () => {
