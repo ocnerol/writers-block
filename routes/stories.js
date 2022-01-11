@@ -113,7 +113,7 @@ module.exports = (db) => {
         for (const row of response.rows) {
           const {
             contributor_id,
-            contributor_title,
+            contribution_title,
             contribution_flavour_text,
             chapter_photo,
             contribution_text,
@@ -124,7 +124,7 @@ module.exports = (db) => {
             {
               contributor_id,
               contributor_name,
-              contributor_title,
+              contribution_title,
               contribution_flavour_text,
               chapter_photo,
               contribution_text,
