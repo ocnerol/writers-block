@@ -92,7 +92,7 @@ form footer style
 */
 #story-form-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   font-size: 0.5rem;
 }
 
@@ -126,4 +126,8 @@ form footer style
   font-size: 5rem;
   padding-top: 2.5rem;
   align-self: center;
+}
+
+#new-story-genre {
+  display: flex;
 }
