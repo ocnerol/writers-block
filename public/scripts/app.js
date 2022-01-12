@@ -24,8 +24,9 @@ mergeContribution = function(contributionID) {
 
 $(() => { //once document is loaded/ready...
 
+  const storyID = $('body').attr('data-story-id');
+
   const loadStory = function() {
-    const storyID = $('body').attr('data-story-id')
     // $.get(`/stories/${storyID}`) //using AJAX to fetch data
     $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
       .then((response) => {
@@ -139,7 +140,7 @@ $(() => { //once document is loaded/ready...
      </i><tag>${contribution_upvote_count}</tag>
      <i class="fas fa-chevron-down"></i>
     </div>`
-    const mergeButton = `<button class="btn btn-secondary merge-contribution" onclick="mergeContribution(${contribution_id})" >Accept & Merge</button>`;
+    const mergeButton = `<button class="btn btn-secondary merge-contribution" onclick="mergeContribution(${storyID},${contribution_id})">Accept & Merge</button>`;
 
      const $contributionFull = $(`
      <div class="full-contribution-container" data-id="${contribution_id}">
