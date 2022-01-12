@@ -22,14 +22,9 @@ module.exports = (db) => {
       });
   });
 
-  router.post("/login/:id", (req, res) => {
+  router.get("/login/:id", (req, res) => {
     req.session.user_id = req.params.id;
     res.redirect('/');
-  });
-
-  router.post("/logout", (req, res) => {
-    delete req.session.user_id;
-    return res.redirect("/");
   });
 
   return router;
