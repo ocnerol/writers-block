@@ -38,6 +38,11 @@ module.exports = (db) => {
   // Add story
   router.post("/new", (req, res) => {
     const userId = req.session.user_id;
+    // only logged-in users can start story
+    if (!userId) {
+      return res.redirect('must_be_logged_in');
+    }
+
     const input = req.body;
     const queryString = `
     INSERT INTO stories (title, flavour_text, cover_photo, is_complete, text, genre, author_id)
