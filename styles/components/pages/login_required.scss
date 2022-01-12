@@ -1,0 +1,25 @@
+/* login_required style rules */
+
+main#login-required {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rem;
+  align-self: flex-start;
+  margin-left: 10rem;
+}
+
+main#login-required > * {
+  font-size: $xxl-size;
+  color: $white;
+}
+
+button.login-required {
+  color: $white;
+  border-color: $white;
+}
+
+@media only screen and (max-width: $desktop-breakpoint) {
+  main#login-required {
+    margin-left: 5rem;
+  }
+  }
