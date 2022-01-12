@@ -1,45 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>New Story</title>
-  </head>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../styles/main.css" type="text/css" />
+  <title>New Story</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&family=Spartan:wght@500;700&display=swap');
+  </style>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap');
+  </style>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+  </style>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+  </style>
 
-  <body>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-    <main style="margin: 1em;">
-      <h3>New Story</h3>
-      <form class="form" action="/stories/new/" method="POST">
-        <div class="form-group mb-2">
-          <input class="form-control" type="text" name="title" placeholder="Story title" style="width: 300px; margin: 1em">
-          <input class="form-control" type="text" name="flavour_text" placeholder="Story flavour_text" style="width: 300px; margin: 1em">
-          <input class="form-control" type="text" name="cover_photo" placeholder="Cover photo url" style="width: 300px; margin: 1em">
-          <input class="form-control" type="text" name="text" placeholder="text" style="width: 300px; margin: 1em">
-          <select class="custom-select" name="genre" style="width: 300px; margin: 1em" required>
-            <option value="" disabled selected hidden>Select a genre</option>
-            <option value="fable">Fable</option>
-            <option value="adventure">Adventure</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="horror">Horror</option>
-          </select>
-          <div class="form-check" style="margin: 1em">
-            <input class="form-check-input" type="checkbox" name="is_complete" value="true">
-            <label class="form-check-label" for="is_complete">
-              Mark story as completed and prevent any new contributions?
-            </label>
-          </div>
-          <button type="submit" class="btn btn-secondary" style="margin: 1em">Submit</button>
+</head>
+
+<body id="new-story-body">
+  <header id="new-story-header">
+    <div class="side-panel-top new-story-left-header">
+      <h2>Wb;</h2>
+    </div>
+
+    <div class="new-story-right-header">
+      <i class="fas fa-arrow-left"></i>
+    </div>
+  </header>
+
+  <main id="new-story-main">
+    <h3 id="new-story-title">Write your story...</h3>
+    <form class="form" action="/stories/new/" method="POST">
+      <div class="form-group mb-2">
+        <div class="story-forms-labels">
+          <label class="new-story" for="title">TITLE:</label>
+          <input class="form-control" type="text" name="title" required>
         </div>
-      </form>
-    </main>
-      <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+        <div class="story-forms-labels">
+          <label class="new-story" for="flavour-text">CAPTION:</label>
+          <input class="form-control" type="text" name="flavour_text" required>
+        </div>
+        <div class="story-forms-labels">
+          <label class="new-story" for="cover_photo">PHOTO:</label>
+          <input class="form-control" type="text" name="cover_photo" required>
+        </div>
+        <textarea class="form-control" id="form-story-text" type="text" name="text" required></textarea>
+        <div id="story-form-footer">
+          <div id="new-story-genre">
+            <label class="new-story" for="genre">GENRE:</label>
+            <select class="form-control" name="genre" required>
+              <option value="" disabled selected hidden>Select a genre</option>
+              <option value="adventure">Adventure</option>
+              <option value="children's">Children's</option>
+              <option value="comedy">Comedy</option>
+              <option value="coming of age">Coming of age</option>
+              <option value="fantasy">Fantasy</option>
+              <option value="folklore">Folklore</option>
+              <option value="historical">Historical</option>
+              <option value="horror">Horror</option>
+              <option value="political">Political</option>
+              <option value="psychological">Psychological</option>
+              <option value="romance">Romance</option>
+              <option value="satire">Satire</option>
+              <option value="science fiction">Science Fiction</option>
+              <option value="spy">Spy</option>
+              <option value="thriller">Thriller</option>
+              <option value="western">Western</option>
+              <option value="young adult">Young Adult</option>
+            </select>
+          </div>
+          <div id="new-story-buttons">
+            <!-- <button class="btn btn-secondary new-story-button">S A V E</button> -->
+            <button type="submit" class="btn btn-secondary new-story-button">SUBMIT</button>
+          </div>
+        </div>
+    </form>
+  </main>
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

@@ -1,0 +1,168 @@
+/* stories_new.ejs */
+/*
+header
+*/
+
+#new-story-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: $white;
+}
+
+#new-story-header * {
+  margin: 1.8rem 1.8rem 0rem;
+}
+
+.new-story-right-header {
+  font-size: 5rem;
+  padding-top: 2.5rem;
+  align-self: center;
+}
+
+/*
+center entire form
+*/
+body#new-story-body {
+  flex-direction: column;
+  min-width: max-content;
+  justify-content: center;
+  align-items: center;
+  background-color: $gold;
+  font-family: $serif;
+}
+
+main#new-story-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 85%;
+  min-width: fit-content;
+  max-width: 60vw;
+  margin: 0px;
+}
+
+/*
+center form title
+*/
+h3#new-story-title {
+  margin: 0% 0% 4%;
+  display: flex;
+  justify-content: center;
+  color: $white;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+/*
+form labels
+*/
+.story-forms-labels {
+  display: flex;
+  align-items: center;
+  font-family: $serif;
+  font-weight: bold;
+  font-size: 1.6rem;
+  color: $white;
+}
+
+.story-forms-labels > * {
+  margin: 0;
+}
+
+label.new-story {
+  width: 20%;
+  margin-right: 1.75rem;
+  text-align: right;
+  font-family: Montserrat, Times, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: $white;
+}
+
+@media only screen and (min-width: $desktop-breakpoint) {
+  label.new-story {
+  margin-right: 0rem;
+  padding-right: 1rem;
+    }
+  }
+
+/*
+form input
+*/
+.form-control {
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 0.33rem;
+  font-size: $s-size;
+}
+
+input.form-control {
+  width: 80%;
+  font-family: $serif;
+  font-size: 1.6rem;
+}
+
+.form-group > * {
+  margin: 0.5rem 0rem;
+}
+
+#form-story-text {
+  margin: 2rem 0rem 3rem 0rem;
+  height: 40vh;
+  resize: none;
+  padding: 2.5rem;
+  font-family: $serif;
+  font-size: 1.6rem;
+}
+
+select.form-control {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+}
+
+/*
+form footer style
+*/
+#story-form-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.5rem;
+}
+
+#story-form-footer > * {
+  margin-left: 1rem;
+}
+
+#new-story-genre {
+  display: flex;
+  align-items: center;
+}
+
+#new-story-genre > * {
+  min-width: fit-content;
+  margin-bottom: 0;
+  margin-right: 2rem;
+}
+
+select.form-control {
+  width: 15vw;
+}
+
+.new-story-button {
+  padding: 0.5vw 2vw;
+  margin-left: 1vw;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  background: inherit;
+  color: $black;
+  border-radius: 50px;
+  border-color: $black;
+  border-width: .25rem;
+  font-size: 1.2rem;
+}
