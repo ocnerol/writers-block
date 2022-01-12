@@ -2,7 +2,21 @@
 
 //const { response } = require("express");
 
+mergeContribution = function(contributionID) {
+  console.log('a click event on a merge contribution button occurred!');
+  console.log(contributionID);
+  // make POST request (make new endpoint which merges contribution)
+  // fetch.POST()
+  // merge
+  // db.query(`
+  //   UPDATE stories
+  //   SET stories_text = stories_text +
+  //   `)
 
+  // make POST request (mark contribution as merged)
+
+  // refresh page
+};
 
 $(() => { //once document is loaded/ready...
 
