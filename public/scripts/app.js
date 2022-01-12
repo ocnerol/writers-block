@@ -17,11 +17,6 @@ $(() => { //once document is loaded/ready...
    hideContributions();
   });
 
-
-
-
-
-
   $(".back-to-blocks").click(function() {
     // $('.full-contribution-container').addClass('hidden');
     // $('.contribution-container').removeClass('hidden');
@@ -46,9 +41,6 @@ $(() => { //once document is loaded/ready...
     $('.new-block').removeClass('hidden');
   }
 
-
-
-
   //   //when we click on the contribution tile
   // $(".contribution-container").click(function() {
   //   //reveal contribution content ... where contribution_id matches
@@ -67,24 +59,16 @@ $(() => { //once document is loaded/ready...
   //   $('.contribution-container').addClass('hidden');
   // });
 
-
-
-
-
-
-
-
-
-
 });
 
-//------------------------------------------------ FUNCTIONS ----------------------------------------------------------//
+//--------------------- FUNCTIONS ----------------------------------------------------------//
 
 const loadStory = function() {
   const storyID = $('body').attr('data-story-id')
-  $.get(`/stories/${storyID}`) //using AJAX to fetch data
+  // $.get(`/stories/${storyID}`) //using AJAX to fetch data
+  $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
     .then((response) => {
-      console.log('response------>', response)
+      //console.log('response------>', response)
       //$("#all-tweets").empty();
       //renderTweets(response);
       $("#author").text(`- ${response.author_name}`)
@@ -118,8 +102,7 @@ const createContributionPreviewElement = function (contribution) {
    const contributionTitle = `<h3 class="contribution-title">${contribution_title}</h3>`;
    const contributorName =`<p class="contributor-name">${nameHyphen}</p>`;
    const flavourText = `<div class="contribution-flavour">${contribution_flavour_text}</div>`;
-   const upVoteCount = `<div class="upvote"> <i class="fas fa-chevron-up"></i>
-   <tag>${contribution_upvote_count}</tag> <i class="fas fa-chevron-down"></i>`
+   const upVoteCount = `<div class="upvote"> <i class="fas fa-chevron-up"></i><tag>${contribution_upvote_count}</tag> <i class="fas fa-chevron-down"></i>`
 
    const $contribution = $(`
    <div class="contribution-container" data-id="${contribution_id}">

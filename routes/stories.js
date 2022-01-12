@@ -71,14 +71,14 @@ module.exports = (db) => {
 
   // Read story (/stories/1)
 
-  router.get('/:id/:slug', (req, res) => {
+  router.get('/:id', (req, res) => {
     res.render("pages/story_page", {id: req.params.id });
   });
 
 
 
 
-  router.get("/:id", (req, res) => {
+  router.get("/:id/data", (req, res) => {
     const id = req.params.id;
     const query = `
     SELECT stories.title AS story_title,

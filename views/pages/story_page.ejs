@@ -27,7 +27,7 @@
 
 </head>
 
-<body data-story-id="<%- id %>">
+<body data-story-id="<%= id %>">
 <!-- <body> -->
   <div class="side-panel-container">
     <%- include('../partials/_side_panel') %>
@@ -49,19 +49,31 @@
   <!--------------- BLOCK FORM------------------------------------------------------------->
   <section class="new-block hidden">
 
+              <form class="form-group" id="new-post-form" action="/stories/<%= id %>/contributions/new" method="POST">
+                <label for="block-text">What comes next?</label>
 
-
-              <form class="form-group" id="new-post-form" action="/tweets" method="POST">
-                <label for="block-text">What are you humming about?</label>
-
-                <textarea name="text" id="tweet-text" rows="1"></textarea>
+                <textarea name="title" id="subtitle" required rows="1"></textarea>
+                <textarea name="flavour_text" id="caption" required rows="1"></textarea>
+                <textarea name="chapter_photo_url" id="photo" rows="1"></textarea>
+                <textarea name="text" id="block-text" required rows="1"></textarea>
 
                 <div class="form-footer">
-                  <button class="tweet-button" type="submit">Submit block</button>
-                  <output name="counter" class="counter" for="tweet-text">140</output>
+                  <div>
+                      <label for="genre-drop">GENRE:</label>
+                      <select id="genre-drop" name="genre-drop">
+                        <option value="volvo">sci-fi</option>
+                        <option value="saab">romance</option>
+                        <option value="fiat" selected>adventure</option>
+                        <option value="audi">thriller</option>
+                        <option value="audi">fantasy</option>
+                        <option value="audi">mystery</option>
+                        <option value="audi">historical fiction</option>
+                      </select>
+                  </div>
+                  <button class="submit-block-btn" type="submit">SUBMIT</button>
                 </div>
               </form>
-            </section>
+  </section>
   <!--------------- BLOCK FORM------------------------------------------------------------->
 
       <div class='add-block-btn'>
