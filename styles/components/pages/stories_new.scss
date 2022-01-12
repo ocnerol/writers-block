@@ -29,7 +29,7 @@ body#new-story-body {
   min-width: max-content;
   justify-content: center;
   align-items: center;
-  background-color: #E1CF8D;
+  background-color: $gold;
   font-family: $serif;
 }
 
@@ -81,7 +81,7 @@ label.new-story {
   color: $white;
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: $desktop-breakpoint) {
   label.new-story {
   margin-right: 0rem;
   padding-right: 1rem;
@@ -95,7 +95,7 @@ form input
   background: rgba(255, 255, 255, 0.5);
   border: none;
   border-radius: 0.33rem;
-  font-size: 1.4rem;
+  font-size: $s-size;
 }
 
 input.form-control {
