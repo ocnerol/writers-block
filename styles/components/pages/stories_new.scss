@@ -42,7 +42,7 @@ set  form labels and forms side-by-side and center vertically
   font-family: "Source Sans Pro", Times, serif;
   font-weight: bold;
   font-size: 1.6rem;
-  color: #FFFFFF;
+  color: $white;
 }
 
 .story-forms-labels > * {
@@ -75,6 +75,7 @@ label.new-story {
   font-family: Montserrat, Times, serif;
   font-size: 1.25rem;
   font-weight: 600;
+  color: $white;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -120,7 +121,7 @@ form footer style
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: #ffffff;
+  color: $white;
 }
 
 #new-story-header * {
