@@ -53,6 +53,11 @@ set  form labels and forms side-by-side and center vertically
   background: rgba(255, 255, 255, 0.5);
   border: none;
   border-radius: 0.33rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  font-size: 1.4rem;
 }
 
 input.form-control {
