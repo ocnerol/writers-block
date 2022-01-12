@@ -67,7 +67,6 @@ html {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.25rem;
-
 }
 
 #complete {
@@ -82,6 +81,7 @@ html {
 #story-text {
   font-size: 1.6rem;
   word-break: break-word;
+  margin-top: 1rem;
 }
 
 #title {
@@ -138,7 +138,7 @@ html {
   box-shadow: 0 0 0.5rem #ccc;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 3rem ;
+  margin-bottom: 3rem;
 }
 
 .contribution-container:hover {
@@ -164,6 +164,7 @@ html {
 .contribution-title {
   font-weight: bold;
   word-break: break-word;
+
 }
 
 .contribution-flavour {
@@ -221,7 +222,8 @@ tag {
 .contribution-text {
   font-size: 1.6rem;
   color: $purp;
-  margin-bottom: 1rem;;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
   word-break: break-all;
 }
 
@@ -360,18 +362,70 @@ option {
 .complete-toggle {
   border-radius: 50px;
   border: solid;
-  border-color: $black;
+  border-color: #a5a5a5;
   border-width: .2rem;
   padding: 1rem;
   margin: 0rem 1rem;
-
+  color: #a5a5a5;
+  box-shadow: 0.1rem 0.1rem .25rem #ccc;
 }
 
 .ongoing-toggle {
+  border-radius: 50px;
+  border: solid;
+  border-color: #a5a5a5;
+  border-width: .2rem;
+  padding: 1rem;
+  margin: 0rem 1rem;
+  color: #a5a5a5;
+  box-shadow: 0.1rem 0.1rem .25rem #ccc;
+}
+.ongoing-toggle:hover {
   border-radius: 50px;
   border: solid;
   border-color: $black;
   border-width: .2rem;
   padding: 1rem;
   margin: 0rem 1rem;
+  background-color: $gold;
+  color: $black;
+  box-shadow: 0.1rem 0.1rem .25rem #ccc;
+}
+
+
+
+
+.complete-toggle:hover {
+  border-radius: 50px;
+  border: solid;
+  border-color: $black;
+  border-width: .2rem;
+  padding: 1rem;
+  margin: 0rem 1rem;
+  background-color: $black;
+  color: white;
+  box-shadow: 0.1rem 0.1rem .25rem #ccc;
+}
+
+.pressed-complete {
+  border-radius: 50px;
+  border: solid;
+  border-color: $black;
+  border-width: .2rem;
+  padding: 1rem;
+  margin: 0rem 1rem;
+  background-color: $black;
+  color: white;
+  box-shadow: 0.1rem 0.1rem .25rem #ccc;
+}
+.pressed-ongoing {
+  border-radius: 50px;
+  background-color: $gold;
+  border:solid;
+  border-color: $gold;
+  border-width: .2rem;
+  padding: 1rem;
+  margin: 0rem 1rem;
+  color: black;
+  box-shadow: 0.1rem 0.1rem .25rem #ccc;
 }
