@@ -6,7 +6,11 @@ mergeContribution = function(contributionID) {
   console.log('a click event on a merge contribution button occurred!');
   console.log(contributionID);
   // make POST request (make new endpoint which merges contribution)
-  // fetch.POST()
+  // fetch('/mergecontribution/:storyID/:contributionID', { method: 'POST' })
+  // .then(response => {
+  //   console.log('successfully merged contribution to story!');
+  // })
+  // .catch(error => console.log(error, error.message));
   // merge
   // db.query(`
   //   UPDATE stories
