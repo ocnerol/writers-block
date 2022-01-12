@@ -68,6 +68,7 @@ html {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.25rem;
+
 }
 
 #complete {
@@ -81,10 +82,12 @@ html {
 
 #story-text {
   font-size: 1.6rem;
+  word-break: break-all;
 }
 
 #title {
   font-weight: bold;
+  word-break: break-all;
 }
 
 .add-block-btn {
@@ -161,10 +164,12 @@ html {
 
 .contribution-title {
   font-weight: bold;
+  word-break: break-all;
 }
 
 .contribution-flavour {
   font-size: 1.6rem;
+  word-break: break-all;
 }
 
 .upvote {
@@ -218,6 +223,7 @@ tag {
   font-size: 1.6rem;
   color: $purp;
   margin-bottom: 1rem;;
+  word-break: break-all;
 }
 
 .full-contribution-footer {
@@ -336,4 +342,39 @@ option {
   font-size: 1.4rem;
   padding: 1rem 2rem;
   margin: 2rem 0;
+}
+
+
+.progress-toggle {
+  display: flex;
+  flex-direction: row;
+  margin: 0.2rem;
+  margin-bottom: 3rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  font-size: 1.4rem;
+  color: black;
+  padding-left: 1rem;
+}
+
+.complete-toggle {
+  border-radius: 50px;
+  border: solid;
+  border-color: $black;
+  border-width: .2rem;
+  padding: 1rem;
+  margin: 1rem;
+
+}
+
+.ongoing-toggle {
+  border-radius: 50px;
+  border: solid;
+  border-color: $black;
+  border-width: .2rem;
+  padding-bottom: 1rem;
+  word-break: none;
+  margin: 1rem
 }

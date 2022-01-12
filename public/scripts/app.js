@@ -84,6 +84,12 @@ const loadStory = function() {
       $(".full-contribution-container").addClass('hidden')
       console.log('userID------>', userID)
       if (response.story_author_id === userID) {
+        console.log('response.story_author_id', response.story_author_id)
+        $("#complete").addClass('hidden')
+        $(".complete-toggle").removeClass('hidden')
+        $(".ongoing-toggle").removeClass('hidden')
+        $("#author").addClass('hidden')
+        $("#genre").addClass('hidden')
         //default complete + inprogress buttons as hidden --> use  .hide/.show THEN SHOW
         //default merge button hidden, show
       }
