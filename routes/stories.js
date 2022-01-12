@@ -7,6 +7,7 @@
 
 const express = require('express');
 const router = express.Router();
+const database = require('./database.js');
 
 module.exports = (db) => {
   // Browse stories
@@ -71,8 +72,15 @@ module.exports = (db) => {
 
   // Read story (/stories/1)
 
-  router.get('/:id', (req, res) => {
-    res.render("pages/story_page", {id: req.params.id });
+  router.get('/:id', async (req, res) => {
+    const userName = await database.getAllUsers(db, req.session.user_id);
+    const stories = await database.getAllStories(db);
+    const templateVars = {
+      userName,
+      stories,
+      id: req.params.id
+    }
+    res.render("pages/story_page", templateVars);
   });
 
 
