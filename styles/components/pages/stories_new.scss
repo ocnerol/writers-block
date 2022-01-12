@@ -30,7 +30,7 @@ body#new-story-body {
   justify-content: center;
   align-items: center;
   background-color: #E1CF8D;
-  font-family: "Source Serif Pro", Times, serif;
+  font-family: $serif;
 }
 
 main#new-story-main {
@@ -61,7 +61,7 @@ form labels
 .story-forms-labels {
   display: flex;
   align-items: center;
-  font-family: "Source Sans Pro", Times, serif;
+  font-family: $serif;
   font-weight: bold;
   font-size: 1.6rem;
   color: $white;
@@ -100,7 +100,7 @@ form input
 
 input.form-control {
   width: 80%;
-  font-family: 'Source-serif Pro', Times, serif;
+  font-family: $serif;
   font-size: 1.6rem;
 }
 
@@ -113,7 +113,7 @@ input.form-control {
   height: 40vh;
   resize: none;
   padding: 2.5rem;
-  font-family: 'Source-serif Pro', Times, serif;
+  font-family: $serif;
 }
 
 select.form-control {
