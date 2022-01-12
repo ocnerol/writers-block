@@ -7,6 +7,7 @@
 
 const express = require('express');
 const router = express.Router();
+const database = require('./database.js');
 
 module.exports = (db) => {
   // Browse stories
@@ -69,8 +70,24 @@ module.exports = (db) => {
     });
   });
 
-  // Read story
-  router.get("/:id", (req, res) => {
+  // Read story (/stories/1)
+
+  router.get('/:id', async (req, res) => {
+    const userName = await database.getAllUsers(db, req.session.user_id);
+    const stories = await database.getAllStories(db);
+    const templateVars = {
+      userName,
+      stories,
+      id: req.params.id,
+      userID: req.session.user_id
+    }
+    res.render("pages/story_page", templateVars);
+  });
+
+
+
+
+  router.get("/:id/data", (req, res) => {
     const id = req.params.id;
     const query = `
     SELECT stories.title AS story_title,
@@ -151,6 +168,12 @@ module.exports = (db) => {
           story_author_id,
           contributions
         };
+
+        //const authorName = data.author_name
+        //const templateVars = {authorName};
+        //console.log('templateVars---->', templateVars)
+        //console.log('data---->', data)
+        //res.render("pages/story_page", templateVars);
         res.json(data);
       })
       .catch(error => {

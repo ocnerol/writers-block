@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Story</title>
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script>
+    let userID = <%= userID %>
+  </script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="../..styles/main.css" type="text/css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Serif+Pro:wght@400;600;700&family=Spartan:wght@500;700&display=swap');
+    </style>
+
+</head>
+
+
+<body data-story-id="<%= id %>">
+  <div class="side-panel-container">
+    <%- include('../partials/_side_panel') %>
+  </div>
+
+  <!--------------- SPECIFIC STORY FULL ------------------------------------------------------------->
+
+  <div class="main-body story-container">
+    <div class="wrapper-story">
+      <div class ="story-heading">
+        <div class ="title-author-label">
+        <h1 id="title"></h1>
+        <p id="author"></p>
+        </div>
+<!-- Toggle button not working, default hidden not display that way -->
+        <p id='complete'></p>
+        <div class="progress-toggle hidden">
+          <p class="complete-toggle hidden">COMPLETE</p>
+          <p class="ongoing-toggle hidden">ON GOING</p>
+        </div>
+        <p id="genre"></p>
+      </div>
+      <p id="story-text"></p>
+  <!--------------- BLOCK FORM------------------------------------------------------------->
+  <section class="new-block hidden">
+
+              <form class="form-group" id="new-post-form" action="/stories/<%= id %>/contributions/new" method="POST">
+                <label for="block-text">What comes next?</label>
+
+                <textarea name="title" id="subtitle" required rows="1"></textarea>
+                <textarea name="flavour_text" id="caption" required rows="1"></textarea>
+                <textarea name="chapter_photo_url" id="photo" rows="1"></textarea>
+                <textarea name="text" id="block-text" required rows="1"></textarea>
+
+                <div class="form-footer">
+                  <div>
+                      <label for="genre-drop">GENRE:</label>
+                      <select id="genre-drop" name="genre-drop">
+                        <option value="volvo">sci-fi</option>
+                        <option value="saab">romance</option>
+                        <option value="fiat" selected>adventure</option>
+                        <option value="audi">thriller</option>
+                        <option value="audi">fantasy</option>
+                        <option value="audi">mystery</option>
+                        <option value="audi">historical fiction</option>
+                      </select>
+                  </div>
+                  <button class="submit-block-btn" type="submit">SUBMIT</button>
+                </div>
+              </form>
+  </section>
+  <!--------------- BLOCK FORM------------------------------------------------------------->
+
+      <div class='add-block-btn'>
+        <i class="fas fa-plus"></i>
+        <p>Add a block</p>
+      </div>
+
+
+
+
+
+
+<!--------------- CONTRIBUTION PREVIEW TILES---------------------------------------------------->
+    <div id="all-contributions">
+<!--
+      <div class ="contribution-container">
+        <div class="contribution-content">
+          <div class="contribution-heading">
+            <h3 class= "contribution-title">More like the Bard and His Lute</h3>
+            <p class="contributor-name"> - Jones Gallagher</p>
+          </div>
+          <div class="contribution-flavour">Weary and heart sick, the youth gently released his burden and silently prepared a place of comfort as his last duty to the loved one. Gathering fallen pine needles, he made a soft cushion and tenderly lifted his old mother onto it.<br> <br>He wrapped her padded coat more closely about the stooping shoulders and with tearful eyes and an aching heart he said farewell. Weary and heart sick, the youth gently released his burden and silently prepared a place of comfort as his last duty to the loved one. Gathering fallen pine needles, he made a soft cushion and tenderly lifted his old mother onto it. Hew rapped her padded coat more closely about the stooping shoulders and with tearful eyes and an aching heart he said farewell.
+          </div>
+          </div>
+        <div class="upvote"> <i class="fas fa-chevron-up"></i>
+          <tag>0</tag>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div> -->
+    </div>
+
+
+
+<!--------------- FULL CONTRIBUTION COMPONENT ---------------------------------------------------->
+
+<div id="full-contribution-view">
+<!--
+  <div class ="full-contribution-container">
+    <div class="full-contribution-content">
+      <div class="contribution-heading">
+        <h3 class= "contribution-title">More like the Bard and His Lute</h3>
+        <p class="contributor-name"> - Jones Gallagher</p>
+      </div>
+      <div class="contribution-text">Weary and heart sick, the youth gently released his burden and silently prepared a place of comfort as his last duty to the loved one. Gathering fallen pine needles, he made a soft cushion and tenderly lifted his old mother onto it.<br> <br>He wrapped her padded coat more closely about the stooping shoulders and with tearful eyes and an aching heart he said farewell. Weary and heart sick, the youth gently released his burden and silently prepared a place of comfort as his last duty to the loved one. Gathering fallen pine needles, he made a soft cushion and tenderly lifted his old mother onto it. Hew rapped her padded coat more closely about the stooping shoulders and with tearful eyes and an aching heart he said farewell. <br> <br>
+      He wrapped her padded coat more closely about the stooping shoulders and with tearful eyes and an aching heart he said farewell. Weary and heart sick, the youth gently released his burden and silently prepared a place of comfort as his last duty to the loved one. Gathering fallen pine needles, he made a soft cushion and tenderly lifted his old mother onto it. Hew rapped her padded coat more closely about the stooping shoulders and with tearful eyes and an aching heart he said farewell.<br> <br>
+      Gathering fallen pine needles, he made a soft cushion and tenderly lifted his old mother onto it.<br> <br>He wrapped her padded coat more closely about the stooping shoulders and with tearful eyes and an aching heart he said farewell. Weary and heart sick, the youth gently released his burden and silently prepared a place of comfort as his last duty to the loved one. Gathering fallen pine needles, he made a soft cushion and tenderly lifted his old mother onto it. Hew rapped her padded coat more closely about the stooping shoulders and with tearful eyes and an aching heart he said farewell.
+
+      </div>
+
+    <div class ="full-contribution-footer">
+       <div class="upvote" id="upvote-horizontal">
+         <i class="fas fa-chevron-up">
+
+         </i><tag>0</tag>
+         <i class="fas fa-chevron-down"></i>
+        </div>
+    </div> -->
+  </div>
+
+    <div class='back-to-blocks'>
+      <i class="fas fa-chevron-left"></i>
+      <p>Back to blocks</p>
+    </div>
+
+  </div>
+
+
+
+  </div>
+</div>
+
+
+</div>
+
+
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="../scripts/app.js"></script>
+</body>
+
+</html>
