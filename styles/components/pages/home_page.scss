@@ -5,27 +5,45 @@
   max-width: 75%;
 }
 
-// User greeting
+/*User greeting*/
 .text-body h1 {
   border-bottom: 1px solid black;
   font-family: $serif;
   font-weight: 700;
   margin: 10rem auto;
   padding-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  a {
+    background-color: $gold;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+  }
 }
 
-// title, author, progress, genre
+/*title, author, progress, genre*/
 .story-details {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 
+  /*author & title div*/
   .name-title {
     display: flex;
     align-items: flex-end;
     column-gap: $m-size;
   }
 
+  /*status & genre div*/
   .status-genre {
     display: flex;
     column-gap: $m-size;
@@ -33,6 +51,7 @@
     letter-spacing: 0.2rem;
   }
 
+  /*story title*/
   h2 {
     font-family: $serif;
   }
@@ -42,10 +61,12 @@
   font-weight: 900;
 }
 
-.homepage-title {
+/*story title*/
+.homepage-story-title {
   font-size: $m-size;
 }
 
+/*author name above story*/
 .homepage-author {
   text-transform: uppercase;
   letter-spacing: 0.2rem;
@@ -54,5 +75,33 @@
 .homepage-flavourtext {
   font-family: $serif;
   font-size: $s-size;
+  margin-bottom: $xl-size;
 }
 
+/*selector for <a> tag for each story on homepage directing to individual story page*/
+.story-tile {
+  text-decoration: none;
+  color: inherit;
+}
+
+/*responsive design for homepage*/
+@media only screen and (max-width: $desktop-breakpoint) {
+  /*Remove the single line layout for Title, Author, Status, Genre*/
+  .story-details {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-bottom: $s-size;
+
+    .name-title {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /*Smaller story title size*/
+    .homepage-story-title {
+      font-size: 2.1rem;
+    }
+  }
+}
