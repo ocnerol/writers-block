@@ -1,0 +1,339 @@
+// See: https://sass-lang.com/
+
+
+// // Colours
+// $gray: #636363;
+// $white: #ffffff;
+// $black: #000000;
+// $purp: #6117ff;
+// $gold: #E1CF8D;
+
+// // Spacing
+// $s-size: 1.2rem;
+// $m-size: 1.6rem;
+// $l-size: 3.2rem;
+// $xl-size: 4.8rem;
+// $mobile-breakpoint: 415px;
+
+// // Panel Widths
+// $side-panel-width: 37.5%;
+// $main-body-width: 62.5%;
+
+
+/* [story_page.scss] */
+
+body,
+html {
+  margin: 0;
+  font-size: 62.5%; //so we can use REM units. 1rem = 10px, 1.6rem = 16px, etc..
+}
+
+.story-container {
+  font-family: 'Source Serif Pro', Times, serif;
+  font-size: 2.4rem;
+  padding-top: 13.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.story-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.title-author-label {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.6rem;
+}
+
+.wrapper-story {
+  margin: 0 auto;
+  max-width: 75%;
+}
+
+#author {
+  font-size: 1.4rem;
+  margin: 0.5rem;
+  padding-left: 1rem;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+}
+
+#genre {
+  font-size: 1.4rem;
+  margin: 0.5rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+}
+
+#complete {
+  font-size: 1.4rem;
+  margin: 0.5rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+}
+
+#story-text {
+  font-size: 1.6rem;
+}
+
+#title {
+  font-weight: bold;
+}
+
+.add-block-btn {
+  display: flex;
+  justify-content: end;
+}
+
+.add-block-btn p {
+  margin: 0.2rem;
+  margin-bottom: 3rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  font-size: 1.4rem;
+  color: $purp;
+  padding-left: 1rem;
+}
+
+.add-block-btn:hover {
+  animation: shake 3s cubic-bezier(0.62, 0.33, 0.46, 0.63);
+  transform: translate3d(0, 0, 0);
+  cursor: pointer;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-2px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(2px, 0, 0);
+  }
+}
+
+//------------------------------------------ CONTRIBUTION SECTION-------------------------------------
+
+
+.contribution-container {
+  border-style: solid;
+  border-width: 0.1rem;
+  border-color: 	#D3D3D3;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.5rem #ccc;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem ;
+}
+
+.contribution-container:hover {
+  box-shadow: 0.5rem 0.5rem 1rem #ccc;
+  cursor: pointer;
+}
+
+.contribution-content {
+  padding: 2rem 2rem;
+}
+
+.contribution-heading {
+  display: flex;
+}
+.contributor-name {
+  font-size: 1.4rem;
+  margin: 0.5rem;
+  padding-left: 1rem;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+}
+
+.contribution-title {
+  font-weight: bold;
+}
+
+.contribution-flavour {
+  font-size: 1.6rem;
+}
+
+.upvote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+i {
+  color: $purp;
+}
+i:hover {
+  color: $purp;
+  cursor: pointer;
+  position: relative;
+  animation-name: bounce;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  cursor: pointer;
+}
+
+@keyframes bounce {
+  0%   {top:0px;}
+  50%  {top:5px;}
+  100% {top:0px;}
+}
+
+tag {
+  font-size: 1.4rem;
+  font-family: 'Roboto', sans-serif;
+  padding: 0rem 1rem;
+}
+
+
+
+//------------------------------------------ FULL CONTRIBUTION-------------------------------------
+
+
+#full-contribution-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+}
+
+.contribution-text {
+  font-size: 1.6rem;
+  color: $purp;
+  margin-bottom: 1rem;;
+}
+
+.full-contribution-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 1rem;
+}
+
+#upvote-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.back-to-blocks {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  &.hidden {
+    display: none;
+  }
+}
+
+.back-to-blocks p {
+  color: black;
+  margin: 0.2rem;
+  margin-bottom: 3rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  font-size: 1.4rem;
+  padding-left: 1rem;
+}
+
+.fa-chevron-left {
+  color: black;
+}
+
+.back-to-blocks:hover {
+  animation: shake 3s cubic-bezier(0.62, 0.33, 0.46, 0.63);
+  transform: translate3d(0, 0, 0);
+  cursor: pointer;
+}
+
+//-------------BLOCK FORM-------------------------------------
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  resize: none;
+}
+#subtitle {
+  resize: none;
+  margin: 0.5rem 0;
+}
+#caption {
+  resize: none;
+  margin: 0.5rem 0;
+}
+#photo {
+  resize: none;
+  margin: 0.5rem 0;
+}
+#block-text {
+  resize: vertical;
+  margin: 0.5rem 0;
+  min-height: 400px;
+}
+
+textarea {
+  border-radius: 0.25rem;
+}
+
+#genre-drop {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  font-size: 1.4rem;
+}
+
+.form-footer {
+  display:flex;
+  justify-content: space-between;
+}
+
+label {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  font-size: 1.4rem;
+}
+
+option {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  font-size: 1.4rem;
+}
+
+.submit-block-btn {
+  background-color: $gold;
+  border-radius: 2rem;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  font-size: 1.4rem;
+  padding: 1rem 2rem;
+  margin: 2rem 0;
+}
