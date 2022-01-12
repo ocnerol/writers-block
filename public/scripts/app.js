@@ -2,9 +2,9 @@
 
 //const { response } = require("express");
 
-mergeContribution = function(contributionID) {
+mergeContribution = function(storyID, contributionID) {
   console.log('a click event on a merge contribution button occurred!');
-  console.log(contributionID);
+  console.log('contributionID:', contributionID, 'storyID:', storyID);
   // make POST request (make new endpoint which merges contribution)
   // fetch('/mergecontribution/:storyID/:contributionID', { method: 'POST' })
   // .then(response => {
