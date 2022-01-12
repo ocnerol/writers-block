@@ -154,13 +154,8 @@ select.form-control {
 }
 
 #new-story-buttons > * {
-  font-size: 0.85rem;
+  font-size: 1.2rem;
   padding: 0.5vw 2vw;
   margin-left: 1vw;
-}
-
-@media only screen and (min-width: 1024px) {
-  #new-story-buttons > * {
-  font-size: 1rem;
-  }
+  letter-spacing: 0.25rem;
 }
