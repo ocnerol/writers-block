@@ -121,12 +121,13 @@ $(() => { //once document is loaded/ready...
      </i><tag>${contribution_upvote_count}</tag>
      <i class="fas fa-chevron-down"></i>
     </div>`
+    const mergeButton = `<button class="btn btn-secondary merge-contribution" onclick="mergeContribution(${contribution_id})" >Accept & Merge</button>`;
 
      const $contributionFull = $(`
      <div class="full-contribution-container" data-id="${contribution_id}">
      <div class="full-contribution-content">
      <div class="contribution-heading">
-     ${contributionTitle} ${contributorName} </div> ${contributionText}<div class ="full-contribution-footer">
+     ${contributionTitle} ${contributorName} ${mergeButton} </div> ${contributionText}<div class ="full-contribution-footer">
 
      </i><tag>${upVoteCount}</tag>
   </div>
@@ -227,3 +228,5 @@ $(() => { //once document is loaded/ready...
 });
 
 //--------------------- FUNCTIONS ----------------------------------------------------------//
+
+
