@@ -33,6 +33,12 @@ module.exports = (db) => {
   // Had to place this before Read Story route bc of route specificity
   // Add story (form)
   router.get("/new", (req, res) => {
+    const userID = req.session.user_id;
+    // only logged-in users can post a story
+    if (!userID) {
+      return res.render('must_be_logged_in');
+    }
+
     res.render("pages/stories_new");  // TODO: make ejs view for new story submission
   });
 
