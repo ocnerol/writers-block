@@ -151,11 +151,17 @@ select.form-control {
   width: 15vw;
 }
 
-
-
-#new-story-buttons > * {
-  font-size: 1.2rem;
+.new-story-button {
   padding: 0.5vw 2vw;
   margin-left: 1vw;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
   letter-spacing: 0.25rem;
+  background: inherit;
+  color: $black;
+  border-radius: 50px;
+  border-color: $black;
+  border-width: .25rem;
+  font-size: 1.2rem;
 }
