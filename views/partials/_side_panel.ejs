@@ -8,7 +8,7 @@
     <h2><%= stories[2].title %></h2>
     <p><%= stories[2].flavour_text %></p>
     <% if (userName) { %>
-      <form method="POST" action="users/logout" class="register-login logged-in">
+      <form method="POST" action="/users/logout" class="register-login logged-in">
         <p>Hello, <%= userName %>!</p>
         <button>Logout</button>
       </form>
@@ -18,7 +18,7 @@
           <button>Register</button>
         </form>
         <!-- Button logs in as user 2 for now until form is implemented -->
-        <form method="POST" action="users/login/2">
+        <form method="POST" action="/users/login/2">
           <button>Login</button>
         </form>
       </div>
