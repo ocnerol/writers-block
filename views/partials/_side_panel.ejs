@@ -1,18 +1,30 @@
 <div id="side-panel">
-  <!-- <img src="/images/book-reader-solid.svg" id="logo" alt="Logo" fill="white"> -->
   <div class="side-panel-top">
-    <h2>Wb;</h2>
+    <h2><a href="/">Wb;</a></h2>
     <h3>Writer's Block</h3>
   </div>
 
   <div class="side-panel-bottom">
-    <h2>Story A: A Sprint to Finish</h2>
-    <p>flavour flavour flavour flavour flavour flavour flavour flavour flavour flavour flavour flavour flavour</p>
-    <button>LOGOUT</button>
+    <h2><%= stories[2].title %></h2>
+    <p><%= stories[2].flavour_text %></p>
+    <% if (userName) { %>
+      <form method="POST" action="/logout" class="register-login logged-in">
+        <p>Hello, <%= userName %>!</p>
+        <button>Logout</button>
+      </form>
+    <% } else { %>
+      <div class="register-login">
+        <form method="POST" action="/register">
+          <button>Register</button>
+        </form>
+        <form method="POST" action="/login">
+          <button>Login</button>
+        </form>
+      </div>
+    <% } %>
   </div>
 
 
 
 </div>
-
 

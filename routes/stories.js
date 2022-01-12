@@ -97,9 +97,9 @@ module.exports = (db) => {
            contributions.text AS contribution_text,
            contributions.upvote_count AS contribution_upvote_count
     FROM stories
-    JOIN contributions ON contributions.story_id = stories.id
+    LEFT JOIN contributions ON contributions.story_id = stories.id
     JOIN users ON users.id = stories.author_id
-    JOIN users AS contribution_users ON contribution_users.id = contributions.contributor_id
+    LEFT JOIN users AS contribution_users ON contribution_users.id = contributions.contributor_id
     WHERE stories.id = $1
     ORDER BY contributions.id;
     `;
@@ -107,6 +107,7 @@ module.exports = (db) => {
     db.query(query, [id])
       .then(response => {
         // story information
+        console.log(id);
         const {
           story_title,
           cover_photo,
@@ -117,31 +118,34 @@ module.exports = (db) => {
           author_name
         } = response.rows[0];
 
-        // group info for each contribution
         const contributions = [];
-        for (const row of response.rows) {
-          const {
-            contribution_id,
-            contributor_id,
-            contribution_title,
-            contribution_flavour_text,
-            chapter_photo,
-            contribution_text,
-            contributor_name,
-            contribution_upvote_count
-          } = row;
-          contributions.push(
-            {
+
+        if (response.rows[0].contribution_id) {
+          // group info for each contribution
+          for (const row of response.rows) {
+            const {
               contribution_id,
               contributor_id,
-              contributor_name,
               contribution_title,
               contribution_flavour_text,
               chapter_photo,
               contribution_text,
+              contributor_name,
               contribution_upvote_count
-            }
-          );
+            } = row;
+            contributions.push(
+              {
+                contribution_id,
+                contributor_id,
+                contributor_name,
+                contribution_title,
+                contribution_flavour_text,
+                chapter_photo,
+                contribution_text,
+                contribution_upvote_count
+              }
+            );
+          }
         }
 
         // bundle up story and contributions array

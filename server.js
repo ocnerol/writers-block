@@ -59,10 +59,10 @@ app.use("/stories", storiesRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", async (req, res) => {
+  const userName = await database.getAllUsers(db, req.session.user_id);
   const stories = await database.getAllStories(db);
-  console.log(stories[0]);
   const templateVars = {
-    userID: req.session.user_id,
+    userName,
     stories
   }
   res.render("index", templateVars);
