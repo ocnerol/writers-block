@@ -55,6 +55,7 @@
     column-gap: $m-size;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
+    white-space: nowrap;
   }
 
   /*story title*/
@@ -70,18 +71,23 @@
 /*story title*/
 .homepage-story-title {
   font-size: $m-size;
+  word-break: break-word;
+  max-width: 90%;
 }
 
 /*author name above story*/
 .homepage-author {
   text-transform: uppercase;
   letter-spacing: 0.2rem;
+  white-space: nowrap;
+  padding-right: $m-size;
 }
 
 .homepage-flavourtext {
   font-family: $serif;
   font-size: $s-size;
   margin-bottom: $xl-size;
+  word-break: break-word;
 }
 
 /*selector for <a> tag for each story on homepage directing to individual story page*/
