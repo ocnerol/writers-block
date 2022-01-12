@@ -36,7 +36,7 @@ module.exports = (db) => {
     const userID = req.session.user_id;
     // only logged-in users can post a story
     if (!userID) {
-      return res.render('must_be_logged_in');
+      return res.render('pages/login_required');
     }
 
     res.render("pages/stories_new");  // TODO: make ejs view for new story submission
