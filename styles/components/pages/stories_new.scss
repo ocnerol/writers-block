@@ -1,5 +1,27 @@
 /* stories_new.ejs */
 /*
+header
+*/
+
+#new-story-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: $white;
+}
+
+#new-story-header * {
+  margin: 1.8rem 1.8rem 0rem;
+}
+
+.new-story-right-header {
+  font-size: 5rem;
+  padding-top: 2.5rem;
+  align-self: center;
+}
+
+/*
 center entire form
 */
 body#new-story-body {
@@ -34,7 +56,7 @@ h3#new-story-title {
 }
 
 /*
-set  form labels and forms side-by-side and center vertically
+form labels
 */
 .story-forms-labels {
   display: flex;
@@ -60,14 +82,6 @@ set  form labels and forms side-by-side and center vertically
   font-size: 1.4rem;
 }
 
-input.form-control {
-  width: 80%;
-}
-
-.form-group > * {
-  margin: 0.5rem 0rem;
-}
-
 label.new-story {
   width: 20%;
   margin-right: 1.75rem;
@@ -79,12 +93,22 @@ label.new-story {
 }
 
 @media only screen and (min-width: 1024px) {
-label.new-story {
-margin-right: 0rem;
-padding-right: 1rem;
+  label.new-story {
+  margin-right: 0rem;
+  padding-right: 1rem;
+    }
   }
+
+/*
+form input
+*/
+input.form-control {
+  width: 80%;
 }
 
+.form-group > * {
+  margin: 0.5rem 0rem;
+}
 
 #form-story-text {
   margin: 2rem 0rem 3rem 0rem;
@@ -102,47 +126,14 @@ form footer style
   font-size: 0.5rem;
 }
 
-.new-story-button {
-  border-radius: 50px;
-  background-color: inherit;
-  color: black;
-  font-weight: bold;
-  border-width: 0.09rem;
-  border-color: black;
-  font-family: "Roboto", Times, serif;
-}
-
 #story-form-footer > * {
   margin-left: 1rem;
-}
-
-#new-story-header {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  color: $white;
-}
-
-#new-story-header * {
-  margin: 1.8rem 1.8rem 0rem;
-}
-
-.new-story-right-header {
-  font-size: 5rem;
-  padding-top: 2.5rem;
-  align-self: center;
-}
-
-#new-story-genre {
-  display: flex;
 }
 
 #new-story-genre {
   display: flex;
   align-items: center;
 }
-
 
 #new-story-genre > * {
   min-width: fit-content;
@@ -152,6 +143,16 @@ form footer style
 
 select.form-control {
   width: 15vw;
+}
+
+.new-story-button {
+  border-radius: 50px;
+  background-color: inherit;
+  color: black;
+  font-weight: bold;
+  border-width: 0.09rem;
+  border-color: black;
+  font-family: "Roboto", Times, serif;
 }
 
 #new-story-buttons > * {
