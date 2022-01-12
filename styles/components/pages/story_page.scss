@@ -28,14 +28,12 @@ html {
   font-size: 62.5%; //so we can use REM units. 1rem = 10px, 1.6rem = 16px, etc..
 }
 
-
 .story-container {
   font-family: 'Source Serif Pro', Times, serif;
   font-size: 2.4rem;
   padding-top: 13.2rem;
   display: flex;
   flex-direction: column;
-
 }
 
 .story-heading {
@@ -50,12 +48,10 @@ html {
   margin-bottom: 1.6rem;
 }
 
-
 .wrapper-story {
   margin: 0 auto;
   max-width: 75%;
 }
-
 
 #author {
   font-size: 1.4rem;
@@ -64,6 +60,7 @@ html {
   font-family: 'Roboto', sans-serif;
   text-transform: uppercase;
 }
+
 #genre {
   font-size: 1.4rem;
   margin: 0.5rem;
@@ -166,7 +163,6 @@ html {
   font-weight: bold;
 }
 
-
 .contribution-flavour {
   font-size: 1.6rem;
 }
@@ -178,7 +174,6 @@ html {
   align-items: center;
   margin-right: 2rem;
 }
-
 
 i {
   color: $purp;
@@ -214,17 +209,16 @@ tag {
   display: flex;
   flex-direction: column;
 }
+
 .hidden {
   display: none;
 }
-
 
 .contribution-text {
   font-size: 1.6rem;
   color: $purp;
   margin-bottom: 1rem;;
 }
-
 
 .full-contribution-footer {
   display: flex;
@@ -234,19 +228,19 @@ tag {
   padding-bottom: 1rem;
 }
 
-
 #upvote-horizontal {
   display: flex;
   flex-direction: row;
   justify-content: left;
 }
 
-
 .back-to-blocks {
   display: flex;
   flex-direction: row;
   justify-content: right;
-
+  &.hidden {
+    display: none;
+  }
 }
 
 .back-to-blocks p {
@@ -313,7 +307,6 @@ textarea {
 .form-footer {
   display:flex;
   justify-content: space-between;
-
 }
 
 label {

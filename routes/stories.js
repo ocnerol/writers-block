@@ -78,7 +78,8 @@ module.exports = (db) => {
     const templateVars = {
       userName,
       stories,
-      id: req.params.id
+      id: req.params.id,
+      userID: req.session.user_id
     }
     res.render("pages/story_page", templateVars);
   });

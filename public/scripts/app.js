@@ -7,6 +7,7 @@
 $(() => { //once document is loaded/ready...
 
   loadStory();
+  $('.back-to-blocks').addClass('hidden');
 
   $(".add-block-btn").click(function() {
     $(this).addClass('hidden');
@@ -14,7 +15,7 @@ $(() => { //once document is loaded/ready...
     // $('.contribution-container').addClass('hidden');
     // $('.new-block').removeClass('hidden');
    // $('.FORM').renoveClass('hidden');
-   hideContributions();
+   hideFullContributions();
   });
 
   $(".back-to-blocks").click(function() {
@@ -23,11 +24,11 @@ $(() => { //once document is loaded/ready...
     // $('.add-block-btn').removeClass('hidden');
     // $('.new-block').addClass('hidden');
     // $('.back-to-blocks').addClass('hidden');
-    displayContributions();
+    displayFullContributions();
 
   });
 
-  const displayContributions = function () {
+  const displayFullContributions = function () {
     $('.full-contribution-container').addClass('hidden');
     $('.contribution-container').removeClass('hidden');
     $('.add-block-btn').removeClass('hidden');
@@ -35,10 +36,12 @@ $(() => { //once document is loaded/ready...
     $('.back-to-blocks').addClass('hidden');
   }
 
-  const hideContributions = function () {
+
+  const hideFullContributions = function () {
     $('.full-contribution-container').addClass('hidden');
     $('.contribution-container').addClass('hidden');
     $('.new-block').removeClass('hidden');
+    $('.back-to-blocks').removeClass('hidden');
   }
 
   //   //when we click on the contribution tile
@@ -79,7 +82,11 @@ const loadStory = function() {
       $("#all-contributions").text(renderContributionsPreview(response.contributions))
       $("#full-contribution-view").text(renderFullContribution(response.contributions))
       $(".full-contribution-container").addClass('hidden')
-
+      console.log('userID------>', userID)
+      if (response.story_author_id === userID) {
+        //default complete + inprogress buttons as hidden --> use  .hide/.show THEN SHOW
+        //default merge button hidden, show
+      }
     })
     .catch((error) => {
       console.log('Error while loading story', error);
@@ -118,7 +125,7 @@ const createContributionPreviewElement = function (contribution) {
     $('.full-contribution-container').addClass('hidden');
     $(`.full-contribution-container[data-id="${contributionID}"]`).removeClass('hidden');
     $('.contribution-container').addClass('hidden');
-
+    $('.back-to-blocks').removeClass('hidden');
    })
 
 
