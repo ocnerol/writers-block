@@ -67,7 +67,7 @@ module.exports = (db) => {
     db.query(queryString, values)
     .then(response => {
       const story = response.rows[0];
-      res.json(story);
+      res.redirect("/");
     })
     .catch(error => {
       res
