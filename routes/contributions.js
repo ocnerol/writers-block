@@ -7,6 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const database = require('./database');
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -58,5 +59,35 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  // handler for increasing upvote count
+  // curl -X POST -i localhost:8080/contributions/6/upvote
+  router.post("/:id/upvote", (req, res) => {
+    contributionID = req.params.id;
+    database.increaseUpvoteCount(db, contributionID)
+      .then((data)=> {
+        res.end();
+      })
+      .catch(e => {
+        console.error(e);
+        res.json(e);
+      });
+  });
+
+  router.post("/:id/downvote", (req, res) => {
+    contributionID = req.params.id;
+    database.decreaseUpvoteCount(db, contributionID)
+      .then(()=> {
+        res.end();
+      })
+      .catch(e => {
+        console.error(e);
+        res.json(e);
+      });
+  });
+
+
+
+
   return router;
 };
