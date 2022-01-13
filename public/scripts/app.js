@@ -96,23 +96,9 @@ $(() => { //once document is loaded/ready...
     $('.back-to-blocks').removeClass('hidden');
   }
 
-  // if story is complete, hide merge button
-  $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
-    .then((response) => {
-      if (response.is_complete) {
-        $('.merge-contribution').hide();
-      } else {
-        $('.merge-contribution').show();
-      }
-    })
-    .catch((error) => {
-      console.log('Error while loading story', error);
-    });
-
-
-  //--------------------- FUNCTIONS ----------------------------------------------------------//
-
 });
+
+//--------------------- FUNCTIONS ----------------------------------------------------------//
 
 const loadStory = function() {
   // $.get(`/stories/${storyID}`) //using AJAX to fetch data
@@ -164,6 +150,19 @@ const loadStory = function() {
         $(".ongoing-toggle").removeClass('hidden')
         $("#author").addClass('hidden')
         $("#genre").addClass('hidden')
+
+        // if story is complete, hide merge button
+        $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
+          .then((response) => {
+            if (response.is_complete) {
+              $('.merge-contribution').hide();
+            } else {
+              $('.merge-contribution').show();
+            }
+          })
+          .catch((error) => {
+            console.log('Error while loading story', error);
+          });
 
         // --------- If author, when clicking the COMPLETE button, add class
         $(".complete-toggle").click(function() {
