@@ -97,7 +97,6 @@ $(() => { //once document is loaded/ready...
   }
 
   // if story is complete, hide merge button
-  const storyID = $('body').attr('data-story-id')
   $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
     .then((response) => {
       if (response.is_complete) {
@@ -190,7 +189,19 @@ const loadStory = function() {
           $(".full-contribution-container").addClass('hidden');
 
 
-
+          // if story is complete, hide merge button
+          const storyID = $('body').attr('data-story-id')
+          $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
+            .then((response) => {
+              if (response.is_complete) {
+                $('.merge-contribution').hide();
+              } else {
+                $('.merge-contribution').show();
+              }
+            })
+            .catch((error) => {
+              console.log('Error while loading story', error);
+            });
 
 
 
