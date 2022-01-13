@@ -1,7 +1,6 @@
 $(document).ready(() => {
   let isUpvoteClicked = false;
   let isDownvoteClicked = false;
-  console.log(storyContributions);
 
   $(".wrapper-story").on("click", ".fa-chevron-up", function () {
     // do nothing if user not logged in
