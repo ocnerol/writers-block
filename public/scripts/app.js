@@ -21,14 +21,15 @@ $(() => { //once document is loaded/ready...
         //console.log('response------>', response)
         //$("#all-tweets").empty();
         //renderTweets(response);
+        const pendingContributions = response.contributions.filter(contribution => !contribution.contribution_is_accepted);
         $("#author").text(`- ${response.author_name}`)
         $("#title").text(response.story_title)
         $("#genre").text(response.genre)
         $("#complete").text(response.is_complete === false ? '(IN PROGRESS)' : '(COMPLETE)')
         $("#story-text").text(response.story_text)
         $("#story-elements").text(renderAcceptedContributions(response.contributions));
-        $("#all-contributions").text(renderContributionsPreview(response.contributions))
-        $("#full-contribution-view").text(renderFullContribution(response.contributions))
+        $("#all-contributions").text(renderContributionsPreview(pendingContributions));
+        $("#full-contribution-view").text(renderFullContribution(pendingContributions));
         $(".full-contribution-container").addClass('hidden')
         console.log('userID------>', userID)
         if (response.story_author_id === userID) {
