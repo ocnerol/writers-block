@@ -234,7 +234,7 @@ $(() => { //once document is loaded/ready...
       $('.contribution-container').addClass('hidden');
       $('.back-to-blocks').removeClass('hidden');
     })
-    
+
      return $contribution;
 
   }
@@ -359,6 +359,5 @@ $(() => { //once document is loaded/ready...
       $("#accepted-contributions-container").append($contributionElement);
     }
   }
-});
 
 //--------------------- FUNCTIONS ----------------------------------------------------------//
