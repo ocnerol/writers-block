@@ -42,6 +42,7 @@ $(() => { //once document is loaded/ready...
 
     // re-load page when a contribution is added to reflect it being part of the story
     loadStory();
+    $(".back-to-blocks").addClass('hidden');
   };
 
   //what was in document ready by itself with error
@@ -179,6 +180,9 @@ const loadStory = function() {
           //Show ---> add block
           $(".add-block-btn").removeClass('hidden')
 
+          // if story is marked as ongoing, hide 'back to blocks' button
+          // since we then only want to see contribution previews
+          $(".back-to-blocks").addClass('hidden');
 
 
 
@@ -224,6 +228,19 @@ const loadStory = function() {
       $("#accepted-contributions-container").append($contributionElement);
     }
   }
+
+// if div.all-contributions does not have hidden class, show back-to-blocks-button
+  if (!$("#all-contributions").hasClass("hidden")) {
+    $(".back-to-blocks").removeClass("hidden");
+  }
+
+  // if ($(".back-to-blocks").hasClass("hidden")) {
+  //   $(".back-to-blocks").hide();
+  // }
+  // } else {
+  //   $(".back-to-blocks").addClass("hidden");
+  // }
+
 
 };
 
