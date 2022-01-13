@@ -107,7 +107,8 @@ module.exports = (db) => {
            contributions.flavour_text AS contribution_flavour_text,
            contributions.chapter_photo_url AS chapter_photo,
            contributions.text AS contribution_text,
-           contributions.upvote_count AS contribution_upvote_count
+           contributions.upvote_count AS contribution_upvote_count,
+           contributions.is_accepted AS contribution_is_accepted
     FROM stories
     LEFT JOIN contributions ON contributions.story_id = stories.id
     JOIN users ON users.id = stories.author_id
@@ -143,7 +144,8 @@ module.exports = (db) => {
               chapter_photo,
               contribution_text,
               contributor_name,
-              contribution_upvote_count
+              contribution_upvote_count,
+              contribution_is_accepted
             } = row;
             contributions.push(
               {
@@ -154,7 +156,8 @@ module.exports = (db) => {
                 contribution_flavour_text,
                 chapter_photo,
                 contribution_text,
-                contribution_upvote_count
+                contribution_upvote_count,
+                contribution_is_accepted
               }
             );
           }
