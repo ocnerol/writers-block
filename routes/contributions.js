@@ -23,12 +23,30 @@ module.exports = (db) => {
       });
   });
 
-  router.get("/:id", (req, res) => {
+  router.get("/contributor/:id", (req, res) => {
     const userID = req.params.id;
     db.query(`
     SELECT * FROM contributions
     WHERE contributor_id = $1;
     `, [userID])
+    .then(data => {
+      const contribution = data.rows;
+      res.json({ contribution });
+    })
+    .catch(err => {
+      res
+      .status(500)
+      .json({ error: err.message });
+    });
+  });
+
+  // get contribution by ID
+  router.get("/:id", (req, res) => {
+    const contributionID = req.params.id;
+    db.query(`
+    SELECT * FROM contributions
+    WHERE id = $1;
+    `, [contributionID])
     .then(data => {
       const contribution = data.rows;
       res.json({ contribution });
