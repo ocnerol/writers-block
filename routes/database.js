@@ -20,8 +20,7 @@ exports.getAllStories = getAllStories;
 const getStoryContributions = (db, storyID) => {
   const query = `
   SELECT * FROM contributions
-  JOIN stories ON stories.id = story_id
-  WHERE stories.id = $1;
+  WHERE story_id = $1;
     `;
   // console.log(query);
   return db.query(query, [storyID])
