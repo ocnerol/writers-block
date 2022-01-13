@@ -107,7 +107,8 @@ module.exports = (db) => {
            contributions.flavour_text AS contribution_flavour_text,
            contributions.chapter_photo_url AS chapter_photo,
            contributions.text AS contribution_text,
-           contributions.upvote_count AS contribution_upvote_count
+           contributions.upvote_count AS contribution_upvote_count,
+           contributions.is_accepted AS contribution_is_accepted
     FROM stories
     LEFT JOIN contributions ON contributions.story_id = stories.id
     JOIN users ON users.id = stories.author_id
@@ -143,7 +144,8 @@ module.exports = (db) => {
               chapter_photo,
               contribution_text,
               contributor_name,
-              contribution_upvote_count
+              contribution_upvote_count,
+              contribution_is_accepted
             } = row;
             contributions.push(
               {
@@ -154,7 +156,8 @@ module.exports = (db) => {
                 contribution_flavour_text,
                 chapter_photo,
                 contribution_text,
-                contribution_upvote_count
+                contribution_upvote_count,
+                contribution_is_accepted
               }
             );
           }
@@ -267,27 +270,58 @@ module.exports = (db) => {
   // Handler for new contribution form. Add data to DB
   router.post("/:id/contributions/new", (req, res) => {
     const input = req.body;
-    db.query(`
-      INSERT INTO contributions (contributor_id, title, flavour_text, chapter_photo_url, text, story_id)
-      VALUES($1, $2, $3, $4, $5, $6)
-      RETURNING *;
-    `, [
-      req.session.user_id,
-      input.title,
-      input.flavour_text,
-      input.chapter_photo_url,
-      input.text,
-      req.params.id
-    ])
-    .then(() => {
-      res.redirect(`/stories/${req.params.id}`);
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
+
+  //fetch the story id and check if is_complete is true or false
+
+    if (req.session.user_id) {
+
+      db.query(`
+      SELECT is_complete
+      FROM stories
+      WHERE id = $1
+      `, [req.params.id])
+      .then((result) => {
+        return result.rows[0].is_complete
+      })
+      .then((isComplete)=>{
+        if (!isComplete) {
+          db.query(`
+          INSERT INTO contributions (contributor_id, title, flavour_text, chapter_photo_url, text, story_id)
+          VALUES($1, $2, $3, $4, $5, $6)
+          RETURNING *;
+          `, [
+            req.session.user_id,
+            input.title,
+            input.flavour_text,
+            input.chapter_photo_url,
+            input.text,
+            req.params.id
+          ])
+          .then(() => {
+            res.redirect(`/stories/${req.params.id}`);
+          })
+          .catch(err => {
+            res
+              .status(500)
+              .json({ error: err.message });
+          });
+        } else {
+          return res.status(400).send("Story is complete")
+        }
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+
+    } else {
+      return res.render('pages/login_required')
+    }
+
   });
 
+
   return router;
+
 };

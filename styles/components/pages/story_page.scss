@@ -92,6 +92,21 @@ html {
   word-break: break-word;
 }
 
+/*
+accepted-contributions container style rules
+*/
+div.accepted-contribution {
+  margin: 2.5rem 0rem;
+}
+.accepted-contribution > * {
+  font-size: 1.6rem;
+}
+
+h1.accepted-contribution {
+  font-weight: bold;
+  word-break: break-all;
+}
+
 .add-block-btn {
   display: flex;
   justify-content: end;
@@ -274,6 +289,19 @@ tag {
   animation: shake 3s cubic-bezier(0.62, 0.33, 0.46, 0.63);
   transform: translate3d(0, 0, 0);
   cursor: pointer;
+}
+
+button.merge-contribution {
+  padding: 0.5vw 2vw;
+  margin-left: 1vw;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  background: inherit;
+  color: $black;
+  border: none;
+  font-size: 1.2rem;
 }
 
 //-------------BLOCK FORM-------------------------------------
