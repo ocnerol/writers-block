@@ -1,7 +1,38 @@
 // Client facing scripts here
 
-//const { response } = require("express");
+//-------------- NOTE: WHEN YOU NEED TO ACCESS DB VALUES FROM BROWSER ON CLICK ------------------------------------//
+/*
 
+1 - USING DATA ATTRIBUTE (PASSING ID FROM REQ.PARAMS > TEMPLATEVARS > EJS and then using .attr() to get the data on that element)
+ $(".back-to-blocks").click(function() {
+  const storyID = $('body').attr('data-story-id')
+    $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
+    .then((response) => {
+      if (response.is_complete) {
+        $('.add-block-btn').addClass('hidden');
+      } else {
+        $('.add-block-btn').removeClass('hidden');
+      }
+    })
+    .catch((error) => {
+        console.log('Error while loading story', error);
+      });
+
+    displayFullContributions();
+  });
+
+2 - USING .text() empty to get the value of the element you want, not recommended to use string to evaluate
+    // if ($('#complete').text()==='(COMPLETE)')  {
+      if ($('#complete').text().includes('COMPLETE')) {
+        $('.add-block-btn').addClass('hidden');
+      } else {
+        $('.add-block-btn').removeClass('hidden');
+      }
+
+3 - USING onclick= in your html tag is like an inline onlick handler for the tag, see MERGE CONTRIBUTION BUTTON
+
+*/
+//----------------------------------------------------------------------------------------------------------------//
 
 
 $(() => { //once document is loaded/ready...
@@ -20,19 +51,33 @@ $(() => { //once document is loaded/ready...
    hideFullContributions();
   });
 
+  // $("#complete").text(response.is_complete === false ? '(IN PROGRESS)' : '(COMPLETE)')
+
   $(".back-to-blocks").click(function() {
     // $('.full-contribution-container').addClass('hidden');
     // $('.contribution-container').removeClass('hidden');
     // $('.add-block-btn').removeClass('hidden');
     // $('.new-block').addClass('hidden');
     // $('.back-to-blocks').addClass('hidden');
+    const storyID = $('body').attr('data-story-id')
+    $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
+    .then((response) => {
+      if (response.is_complete) {
+        $('.add-block-btn').addClass('hidden');
+      } else {
+        $('.add-block-btn').removeClass('hidden');
+      }
+    })
+    .catch((error) => {
+        console.log('Error while loading story', error);
+      });
+
     displayFullContributions();
   });
 
   const displayFullContributions = function () {
     $('.full-contribution-container').addClass('hidden');
     $('.contribution-container').removeClass('hidden');
-    //$('.add-block-btn').removeClass('hidden');
     $('.new-block').addClass('hidden');
     $('.back-to-blocks').addClass('hidden');
   }
@@ -112,9 +157,11 @@ $(() => { //once document is loaded/ready...
 
             //Hide 'Add a block'
             $(".add-block-btn").addClass('hidden')
+            //Hide 'BLOCK FORM'
+            $(".new-block").addClass('hidden')
 
-            //Hide --->
-              //$(".").addClass('hidden')
+
+
 
             //Hide ---> 'Back to blocks'
             $(".back-to-blocks").addClass('hidden')
@@ -122,6 +169,10 @@ $(() => { //once document is loaded/ready...
             //Hide ---> contribution container preview tiles
             $(".contribution-container").removeClass('hidden')
             $(".full-contribution-container").addClass('hidden');
+
+
+
+
 
 
           });
@@ -136,6 +187,10 @@ $(() => { //once document is loaded/ready...
             //Show ---> add block
             $(".add-block-btn").removeClass('hidden')
 
+
+
+
+            $(".new-block").addClass('hidden')
             //Hide ---> full preview of the spec
            // $(".contribution-container").removeClass('hidden')
 
@@ -144,6 +199,7 @@ $(() => { //once document is loaded/ready...
 
             //Show ---> contribution container IF full-contribution is hidden
             $(".contribution-container").removeClass('hidden')
+            $(".full-contribution-container").addClass('hidden')
 
 
 
