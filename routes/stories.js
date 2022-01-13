@@ -77,7 +77,6 @@ module.exports = (db) => {
   });
 
   // Read story (/stories/1)
-
   router.get('/:id', async (req, res) => {
     const userName = await database.getAllUsers(db, req.session.user_id);
     const stories = await database.getAllStories(db);
@@ -89,8 +88,6 @@ module.exports = (db) => {
     }
     res.render("pages/story_page", templateVars);
   });
-
-
 
 
   router.get("/:id/data", (req, res) => {
@@ -218,30 +215,113 @@ module.exports = (db) => {
   });
 
 
-  // Handler for new contribution form. Add data to DB
-  router.post("/:id/contributions/new", (req, res) => {
-    const input = req.body;
+//---------------------------------------------ONGOING/COMPLETE TOGGLE
+  //On click of complete toggle, we will mark story as iscomplete TRUE
+  router.post("/:id/complete", (req, res) => {
+    //const input = req.body;
     db.query(`
-      INSERT INTO contributions (contributor_id, title, flavour_text, chapter_photo_url, text, story_id)
-      VALUES($1, $2, $3, $4, $5, $6)
+      UPDATE stories
+      SET is_complete = TRUE
+      WHERE author_id= $1 AND id = $2
       RETURNING *;
     `, [
       req.session.user_id,
-      input.title,
-      input.flavour_text,
-      input.chapter_photo_url,
-      input.text,
       req.params.id
     ])
     .then(() => {
-      res.redirect(`/stories/${req.params.id}`);
+     // console.log('res.data ------>', response.data)
+      res.status(200).json({ message: "success"});
     })
+
     .catch(err => {
+      console.log('err', err)
       res
         .status(500)
         .json({ error: err.message });
     });
   });
 
+
+  //On click of ONGOING toggle we will mark story iscomplete FALSE
+  router.post("/:id/ongoing", (req, res) => {
+   // const input = req.body;
+    db.query(`
+      UPDATE stories
+      SET is_complete = FALSE
+      WHERE author_id= $1 AND id = $2
+      RETURNING *;
+    `, [
+      req.session.user_id,
+      req.params.id
+    ])
+    .then(() => {
+      res.status(200).json({ message: "success"});
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+
+  });
+
+
+
+  // Handler for new contribution form. Add data to DB
+  router.post("/:id/contributions/new", (req, res) => {
+    const input = req.body;
+
+  //fetch the story id and check if is_complete is true or false
+
+    if (req.session.user_id) {
+
+      db.query(`
+      SELECT is_complete
+      FROM stories
+      WHERE id = $1
+      `, [req.params.id])
+      .then((result) => {
+        return result.rows[0].is_complete
+      })
+      .then((isComplete)=>{
+        if (!isComplete) {
+          db.query(`
+          INSERT INTO contributions (contributor_id, title, flavour_text, chapter_photo_url, text, story_id)
+          VALUES($1, $2, $3, $4, $5, $6)
+          RETURNING *;
+          `, [
+            req.session.user_id,
+            input.title,
+            input.flavour_text,
+            input.chapter_photo_url,
+            input.text,
+            req.params.id
+          ])
+          .then(() => {
+            res.redirect(`/stories/${req.params.id}`);
+          })
+          .catch(err => {
+            res
+              .status(500)
+              .json({ error: err.message });
+          });
+        } else {
+          return res.status(400).send("Story is complete")
+        }
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+
+    } else {
+      return res.render('pages/login_required')
+    }
+
+  });
+
+
   return router;
+
 };
