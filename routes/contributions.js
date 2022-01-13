@@ -58,5 +58,22 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  router.post("/mark-as-merged/:contributionID", (req, res) => {
+    const contributionID = req.params.contributionID;
+
+    db.query(`
+    UPDATE contributions
+    SET is_accepted = TRUE
+    WHERE contributions.id = $1
+    RETURNING *;
+    `, [ contributionID ])
+    .then(response => {
+      console.log('successfully updated contribution is_accepted field to TRUE!');
+    })
+    .catch(error => {
+      res.json({ error: `error updating contribution is_accepted field: ${error.message}` });
+    });
+  });
   return router;
 };

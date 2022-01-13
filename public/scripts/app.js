@@ -310,17 +310,3 @@ const renderAcceptedContributions = (contributions) => {
     $("#accepted-contributions-container").append($contributionElement);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
