@@ -252,10 +252,7 @@ $(() => { //once document is loaded/ready...
   };
 
   const renderAcceptedContributions = (contributions) => {
-    let acceptedContributions = contributions.filter(contribution => {
-      return contribution.contribution_is_accepted;
-    });
-    for (let contribution of acceptedContributions) {
+    for (let contribution of contributions) {
       const $contributionElement = createAcceptedContribution(contribution);
       $("#accepted-contributions-container").append($contributionElement);
     }
