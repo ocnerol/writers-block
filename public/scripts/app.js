@@ -131,7 +131,7 @@ $(() => { //once document is loaded/ready...
      </i><tag>${contribution_upvote_count}</tag>
      <i class="fas fa-chevron-down"></i>
     </div>`
-    const mergeButton = `<button class="btn btn-secondary merge-contribution" onclick="mergeContribution(${storyID},${contribution_id})">Merge <i class="fas fa-check"></i></button>`;
+    const mergeButton = `<button class="btn btn-secondary merge-contribution" onclick="mergeContribution(${storyID},${contribution_id})">Merge <img src="../images/merge-icon.svg"></button>`;
 
     const $contributionFull = $(`
      <div class="full-contribution-container" data-id="${contribution_id}">
