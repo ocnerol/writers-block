@@ -33,9 +33,8 @@
 
   /*Writer's Block text underneath logo*/
   h3 {
-    font-size: $l-size;
-    font-family: 'Spartan', Arial, sans-serif;
-    margin-left: 2.4rem;
+    visibility: hidden;
+    height: 0;
   }
 }
 
