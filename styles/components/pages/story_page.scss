@@ -90,6 +90,21 @@ html {
   word-break: break-all;
 }
 
+/*
+accepted-contributions container style rules
+*/
+div.accepted-contribution {
+  margin: 2.5rem 0rem;
+}
+.accepted-contribution > * {
+  font-size: 1.6rem;
+}
+
+h1.accepted-contribution {
+  font-weight: bold;
+  word-break: break-all;
+}
+
 .add-block-btn {
   display: flex;
   justify-content: end;
