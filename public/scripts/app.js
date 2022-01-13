@@ -67,14 +67,14 @@ $(() => { //once document is loaded/ready...
     // $('.back-to-blocks').addClass('hidden');
     const storyID = $('body').attr('data-story-id')
     $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
-    .then((response) => {
-      if (response.is_complete) {
-        $('.add-block-btn').addClass('hidden');
-      } else {
-        $('.add-block-btn').removeClass('hidden');
-      }
-    })
-    .catch((error) => {
+      .then((response) => {
+        if (response.is_complete) {
+          $('.add-block-btn').addClass('hidden');
+        } else {
+          $('.add-block-btn').removeClass('hidden');
+        }
+      })
+      .catch((error) => {
         console.log('Error while loading story', error);
       });
 
@@ -96,6 +96,19 @@ $(() => { //once document is loaded/ready...
     $('.back-to-blocks').removeClass('hidden');
   }
 
+  // if story is complete, hide merge button
+  const storyID = $('body').attr('data-story-id')
+  $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
+    .then((response) => {
+      if (response.is_complete) {
+        $('.merge-contribution').hide();
+      } else {
+        $('.merge-contribution').show();
+      }
+    })
+    .catch((error) => {
+      console.log('Error while loading story', error);
+    });
 
 
   //--------------------- FUNCTIONS ----------------------------------------------------------//
@@ -242,7 +255,7 @@ const loadStory = function() {
     }
   }
 
-// if div.all-contributions does not have hidden class, show back-to-blocks-button
+  // if div.all-contributions does not have hidden class, show back-to-blocks-button
   if (!$("#all-contributions").hasClass("hidden")) {
     $(".back-to-blocks").removeClass("hidden");
   }
