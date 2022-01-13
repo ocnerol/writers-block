@@ -1,7 +1,38 @@
 // Client facing scripts here
 
-//const { response } = require("express");
+//-------------- NOTE: WHEN YOU NEED TO ACCESS DB VALUES FROM BROWSER ON CLICK ------------------------------------//
+/*
 
+1 - USING DATA ATTRIBUTE (PASSING ID FROM REQ.PARAMS > TEMPLATEVARS > EJS and then using .attr() to get the data on that element)
+ $(".back-to-blocks").click(function() {
+  const storyID = $('body').attr('data-story-id')
+    $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
+    .then((response) => {
+      if (response.is_complete) {
+        $('.add-block-btn').addClass('hidden');
+      } else {
+        $('.add-block-btn').removeClass('hidden');
+      }
+    })
+    .catch((error) => {
+        console.log('Error while loading story', error);
+      });
+
+    displayFullContributions();
+  });
+
+2 - USING .text() empty to get the value of the element you want, not recommended to use string to evaluate
+    // if ($('#complete').text()==='(COMPLETE)')  {
+      if ($('#complete').text().includes('COMPLETE')) {
+        $('.add-block-btn').addClass('hidden');
+      } else {
+        $('.add-block-btn').removeClass('hidden');
+      }
+
+3 - USING onclick= in your html tag is like an inline onlick handler for the tag, see MERGE CONTRIBUTION BUTTON
+
+*/
+//----------------------------------------------------------------------------------------------------------------//
 
 
 $(() => { //once document is loaded/ready...
@@ -26,13 +57,25 @@ $(() => { //once document is loaded/ready...
     // $('.add-block-btn').removeClass('hidden');
     // $('.new-block').addClass('hidden');
     // $('.back-to-blocks').addClass('hidden');
+    const storyID = $('body').attr('data-story-id')
+    $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
+    .then((response) => {
+      if (response.is_complete) {
+        $('.add-block-btn').addClass('hidden');
+      } else {
+        $('.add-block-btn').removeClass('hidden');
+      }
+    })
+    .catch((error) => {
+        console.log('Error while loading story', error);
+      });
+
     displayFullContributions();
   });
 
   const displayFullContributions = function () {
     $('.full-contribution-container').addClass('hidden');
     $('.contribution-container').removeClass('hidden');
-    //$('.add-block-btn').removeClass('hidden');
     $('.new-block').addClass('hidden');
     $('.back-to-blocks').addClass('hidden');
   }
@@ -44,24 +87,6 @@ $(() => { //once document is loaded/ready...
     $('.new-block').removeClass('hidden');
     $('.back-to-blocks').removeClass('hidden');
   }
-
-  //   //when we click on the contribution tile
-  // $(".contribution-container").click(function() {
-  //   //reveal contribution content ... where contribution_id matches
-  //   $('.full-contribution-container').removeClass('hidden');
-  //   $('.contribution-container').addClass('hidden');
-  // });
-
-  //   //when we click on the contribution tile
-  // $(".contribution-container").click(function() {
-  // const contributionID = $(this).attr('data-id')
-  // console.log('contributionID---->',contributionID)
-  // console.log('THIS------>',this)
-  //   //reveal contribution content ... where contribution_id matches
-  //   $('.full-contribution-container').removeClass('hidden');
-  //   if (contribution_id)
-  //   $('.contribution-container').addClass('hidden');
-  // });
 
 });
 
@@ -75,8 +100,6 @@ $(() => { //once document is loaded/ready...
     $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
       .then((response) => {
         //console.log('response------>', response)
-        //$("#all-tweets").empty();
-        //renderTweets(response);
         $("#author").text(`- ${response.author_name}`)
         $("#title").text(response.story_title)
         $("#genre").text(response.genre)
@@ -112,9 +135,11 @@ $(() => { //once document is loaded/ready...
 
             //Hide 'Add a block'
             $(".add-block-btn").addClass('hidden')
+            //Hide 'BLOCK FORM'
+            $(".new-block").addClass('hidden')
 
-            //Hide --->
-              //$(".").addClass('hidden')
+
+
 
             //Hide ---> 'Back to blocks'
             $(".back-to-blocks").addClass('hidden')
@@ -122,6 +147,10 @@ $(() => { //once document is loaded/ready...
             //Hide ---> contribution container preview tiles
             $(".contribution-container").removeClass('hidden')
             $(".full-contribution-container").addClass('hidden');
+
+
+
+
 
 
           });
@@ -136,6 +165,10 @@ $(() => { //once document is loaded/ready...
             //Show ---> add block
             $(".add-block-btn").removeClass('hidden')
 
+
+
+
+            $(".new-block").addClass('hidden')
             //Hide ---> full preview of the spec
            // $(".contribution-container").removeClass('hidden')
 
@@ -144,15 +177,11 @@ $(() => { //once document is loaded/ready...
 
             //Show ---> contribution container IF full-contribution is hidden
             $(".contribution-container").removeClass('hidden')
+            $(".full-contribution-container").addClass('hidden')
 
 
 
           });
-
-
-
-          //default complete + inprogress buttons as hidden --> use  .hide/.show THEN SHOW
-          //default merge button hidden, show
         }
       })
       .catch((error) => {
@@ -172,7 +201,6 @@ $(() => { //once document is loaded/ready...
      } = contribution;
 
      const nameHyphen = `- ${contributor_name}`
-    // console.log('nameHyphen----->', nameHyphen)
      const contributionTitle = `<h3 class="contribution-title">${contribution_title}</h3>`;
      const contributorName =`<p class="contributor-name">${nameHyphen}</p>`;
      const flavourText = `<div class="contribution-flavour">${contribution_flavour_text}</div>`;
@@ -194,20 +222,6 @@ $(() => { //once document is loaded/ready...
       $('.contribution-container').addClass('hidden');
       $('.back-to-blocks').removeClass('hidden');
      })
-
-
-
-    //   //when we click on the contribution tile
-    // $(".contribution-container").click(function() {
-    // const contributionID = $(this).attr('data-id')
-    // console.log('contributionID---->',contributionID)
-    // console.log('THIS------>',this)
-    //   //reveal contribution content ... where contribution_id matches
-
-    // });
-
-
-
 
      return $contribution;
 
@@ -232,7 +246,6 @@ $(() => { //once document is loaded/ready...
      } = contribution;
 
      const nameHyphen = `- ${contributor_name}`
-    // console.log('nameHyphen----->', nameHyphen)
      const contributionTitle = `<h3 class="contribution-title">${contribution_title}</h3>`;
      const contributorName =`<p class="contributor-name">${nameHyphen}</p>`;
      const contributionText = `<div class="contribution-text">${contribution_text}</div>`;
