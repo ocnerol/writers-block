@@ -190,7 +190,6 @@ const loadStory = function() {
 
 
           // if story is complete, hide merge button
-          const storyID = $('body').attr('data-story-id')
           $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
             .then((response) => {
               if (response.is_complete) {
@@ -235,6 +234,7 @@ const loadStory = function() {
           $(".full-contribution-container").addClass('hidden')
 
 
+          $('.merge-contribution').show();
 
         });
       }
