@@ -176,7 +176,7 @@ $(() => { //once document is loaded/ready...
      const contributionTitle = `<h3 class="contribution-title">${contribution_title}</h3>`;
      const contributorName =`<p class="contributor-name">${nameHyphen}</p>`;
      const flavourText = `<div class="contribution-flavour">${contribution_flavour_text}</div>`;
-     const upVoteCount = `<div class="upvote"> <i class="fas fa-chevron-up"></i><tag>${contribution_upvote_count}</tag> <i class="fas fa-chevron-down"></i>`
+     const upVoteCount = `<div class="upvote"> <i class="fas fa-chevron-up"></i><tag class=tag${contribution_id}>${contribution_upvote_count}</tag> <i class="fas fa-chevron-down"></i>`
 
      const $contribution = $(`
      <div class="contribution-container" data-id="${contribution_id}">
@@ -237,9 +237,8 @@ $(() => { //once document is loaded/ready...
      const contributorName =`<p class="contributor-name">${nameHyphen}</p>`;
      const contributionText = `<div class="contribution-text">${contribution_text}</div>`;
      const upVoteCount = `<div class="upvote" id="upvote-horizontal">
-     <i class="fas fa-chevron-up">
-
-     </i><tag>${contribution_upvote_count}</tag>
+     <i class="fas fa-chevron-up"></i>
+     <tag class=tag${contribution_id}>${contribution_upvote_count}</tag>
      <i class="fas fa-chevron-down"></i>
     </div>`
 
