@@ -6,6 +6,69 @@
 
 $(() => { //once document is loaded/ready...
 
+//what was in document ready by itself with error
+
+  loadStory();
+  $('.back-to-blocks').addClass('hidden');
+
+  $(".add-block-btn").click(function() {
+    $(this).addClass('hidden');
+    // $('.full-contribution-container').addClass('hidden');
+    // $('.contribution-container').addClass('hidden');
+    // $('.new-block').removeClass('hidden');
+   // $('.FORM').renoveClass('hidden');
+   hideFullContributions();
+  });
+
+  $(".back-to-blocks").click(function() {
+    // $('.full-contribution-container').addClass('hidden');
+    // $('.contribution-container').removeClass('hidden');
+    // $('.add-block-btn').removeClass('hidden');
+    // $('.new-block').addClass('hidden');
+    // $('.back-to-blocks').addClass('hidden');
+    displayFullContributions();
+  });
+
+  const displayFullContributions = function () {
+    $('.full-contribution-container').addClass('hidden');
+    $('.contribution-container').removeClass('hidden');
+    //$('.add-block-btn').removeClass('hidden');
+    $('.new-block').addClass('hidden');
+    $('.back-to-blocks').addClass('hidden');
+  }
+
+
+  const hideFullContributions = function () {
+    $('.full-contribution-container').addClass('hidden');
+    $('.contribution-container').addClass('hidden');
+    $('.new-block').removeClass('hidden');
+    $('.back-to-blocks').removeClass('hidden');
+  }
+
+  //   //when we click on the contribution tile
+  // $(".contribution-container").click(function() {
+  //   //reveal contribution content ... where contribution_id matches
+  //   $('.full-contribution-container').removeClass('hidden');
+  //   $('.contribution-container').addClass('hidden');
+  // });
+
+  //   //when we click on the contribution tile
+  // $(".contribution-container").click(function() {
+  // const contributionID = $(this).attr('data-id')
+  // console.log('contributionID---->',contributionID)
+  // console.log('THIS------>',this)
+  //   //reveal contribution content ... where contribution_id matches
+  //   $('.full-contribution-container').removeClass('hidden');
+  //   if (contribution_id)
+  //   $('.contribution-container').addClass('hidden');
+  // });
+
+});
+
+//--------------------- FUNCTIONS ----------------------------------------------------------//
+
+
+
   const loadStory = function() {
     const storyID = $('body').attr('data-story-id')
     // $.get(`/stories/${storyID}`) //using AJAX to fetch data
@@ -24,12 +87,70 @@ $(() => { //once document is loaded/ready...
         $(".full-contribution-container").addClass('hidden')
         console.log('userID------>', userID)
         if (response.story_author_id === userID) {
+          if (response.is_complete) {
+            $(".complete-toggle").addClass('pressed-complete')
+            $(".ongoing-toggle").removeClass('pressed-ongoing')
+            $('.add-block-btn').addClass('hidden');
+          } else {
+            $(".complete-toggle").removeClass('pressed-complete')
+            $(".ongoing-toggle").addClass('pressed-ongoing')
+          }
           console.log('response.story_author_id', response.story_author_id)
           $("#complete").addClass('hidden')
           $(".complete-toggle").removeClass('hidden')
           $(".ongoing-toggle").removeClass('hidden')
           $("#author").addClass('hidden')
           $("#genre").addClass('hidden')
+
+      // --------- If author, when clicking the COMPLETE button, add class
+          $(".complete-toggle").click(function() {
+            const storyID = $('body').attr('data-story-id')
+            //console.log('storyID------>', storyID)
+            $.post(`http://localhost:8080/stories/${storyID}/complete`)
+            $(".complete-toggle").addClass('pressed-complete')
+            $(".ongoing-toggle").removeClass('pressed-ongoing')
+
+            //Hide 'Add a block'
+            $(".add-block-btn").addClass('hidden')
+
+            //Hide --->
+              //$(".").addClass('hidden')
+
+            //Hide ---> 'Back to blocks'
+            $(".back-to-blocks").addClass('hidden')
+
+            //Hide ---> contribution container preview tiles
+            $(".contribution-container").removeClass('hidden')
+            $(".full-contribution-container").addClass('hidden');
+
+
+          });
+
+      //---------- If author, when clicking the ONGOING button, add class
+          $(".ongoing-toggle").click(function() {
+            const storyID = $('body').attr('data-story-id')
+            $.post(`http://localhost:8080/stories/${storyID}/ongoing`)
+            $(".complete-toggle").removeClass('pressed-complete')
+            $(".ongoing-toggle").addClass('pressed-ongoing')
+
+            //Show ---> add block
+            $(".add-block-btn").removeClass('hidden')
+
+            //Hide ---> full preview of the spec
+           // $(".contribution-container").removeClass('hidden')
+
+            //Hide ---> 'Back to blocks'
+            //$(".back-to-blocks").removeClass('hidden')
+
+            //Show ---> contribution container IF full-contribution is hidden
+            $(".contribution-container").removeClass('hidden')
+
+
+
+          });
+
+
+
           //default complete + inprogress buttons as hidden --> use  .hide/.show THEN SHOW
           //default merge button hidden, show
         }
@@ -153,77 +274,3 @@ $(() => { //once document is loaded/ready...
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//what was in document ready by itself with error
-
-  loadStory();
-  $('.back-to-blocks').addClass('hidden');
-
-  $(".add-block-btn").click(function() {
-    $(this).addClass('hidden');
-    // $('.full-contribution-container').addClass('hidden');
-    // $('.contribution-container').addClass('hidden');
-    // $('.new-block').removeClass('hidden');
-   // $('.FORM').renoveClass('hidden');
-   hideFullContributions();
-  });
-
-  $(".back-to-blocks").click(function() {
-    // $('.full-contribution-container').addClass('hidden');
-    // $('.contribution-container').removeClass('hidden');
-    // $('.add-block-btn').removeClass('hidden');
-    // $('.new-block').addClass('hidden');
-    // $('.back-to-blocks').addClass('hidden');
-    displayFullContributions();
-  });
-
-  const displayFullContributions = function () {
-    $('.full-contribution-container').addClass('hidden');
-    $('.contribution-container').removeClass('hidden');
-    $('.add-block-btn').removeClass('hidden');
-    $('.new-block').addClass('hidden');
-    $('.back-to-blocks').addClass('hidden');
-  }
-
-
-  const hideFullContributions = function () {
-    $('.full-contribution-container').addClass('hidden');
-    $('.contribution-container').addClass('hidden');
-    $('.new-block').removeClass('hidden');
-    $('.back-to-blocks').removeClass('hidden');
-  }
-
-  //   //when we click on the contribution tile
-  // $(".contribution-container").click(function() {
-  //   //reveal contribution content ... where contribution_id matches
-  //   $('.full-contribution-container').removeClass('hidden');
-  //   $('.contribution-container').addClass('hidden');
-  // });
-
-  //   //when we click on the contribution tile
-  // $(".contribution-container").click(function() {
-  // const contributionID = $(this).attr('data-id')
-  // console.log('contributionID---->',contributionID)
-  // console.log('THIS------>',this)
-  //   //reveal contribution content ... where contribution_id matches
-  //   $('.full-contribution-container').removeClass('hidden');
-  //   if (contribution_id)
-  //   $('.contribution-container').addClass('hidden');
-  // });
-
-});
-
-//--------------------- FUNCTIONS ----------------------------------------------------------//

@@ -77,7 +77,6 @@ module.exports = (db) => {
   });
 
   // Read story (/stories/1)
-
   router.get('/:id', async (req, res) => {
     const userName = await database.getAllUsers(db, req.session.user_id);
     const stories = await database.getAllStories(db);
@@ -89,8 +88,6 @@ module.exports = (db) => {
     }
     res.render("pages/story_page", templateVars);
   });
-
-
 
 
   router.get("/:id/data", (req, res) => {
@@ -213,6 +210,58 @@ module.exports = (db) => {
 
     res.render("pages/contributions_new", templateVars);
   });
+
+
+//---------------------------------------------ONGOING/COMPLETE TOGGLE
+  //On click of complete toggle, we will mark story as iscomplete TRUE
+  router.post("/:id/complete", (req, res) => {
+    //const input = req.body;
+    db.query(`
+      UPDATE stories
+      SET is_complete = TRUE
+      WHERE author_id= $1 AND id = $2
+      RETURNING *;
+    `, [
+      req.session.user_id,
+      req.params.id
+    ])
+    .then(() => {
+     // console.log('res.data ------>', response.data)
+      res.status(200).json({ message: "success"});
+    })
+
+    .catch(err => {
+      console.log('err', err)
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+  });
+
+
+  //On click of ONGOING toggle we will mark story iscomplete FALSE
+  router.post("/:id/ongoing", (req, res) => {
+   // const input = req.body;
+    db.query(`
+      UPDATE stories
+      SET is_complete = FALSE
+      WHERE author_id= $1 AND id = $2
+      RETURNING *;
+    `, [
+      req.session.user_id,
+      req.params.id
+    ])
+    .then(() => {
+      res.status(200).json({ message: "success"});
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+
+  });
+
 
 
   // Handler for new contribution form. Add data to DB
