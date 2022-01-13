@@ -131,16 +131,25 @@ $(() => { //once document is loaded/ready...
      </i><tag>${contribution_upvote_count}</tag>
      <i class="fas fa-chevron-down"></i>
     </div>`
-    const mergeButton = `<button class="btn btn-secondary merge-contribution" onclick="mergeContribution(${storyID},${contribution_id})">Accept & Merge</button>`;
+    const mergeButton = `<button class="btn btn-secondary merge-contribution" onclick="mergeContribution(${storyID},${contribution_id})">Merge <i class="fas fa-check"></i></button>`;
 
     const $contributionFull = $(`
      <div class="full-contribution-container" data-id="${contribution_id}">
-     <div class="full-contribution-content">
-     <div class="contribution-heading">
-     ${contributionTitle} ${contributorName} ${mergeButton} </div> ${contributionText}<div class ="full-contribution-footer">
+      <div class="full-contribution-content">
+        <div class="contribution-heading">
+          ${contributionTitle}
+          ${contributorName}
+        </div>
+        ${contributionText}
+        <div class="full-contribution-footer">
+          <tag>${upVoteCount}</tag>
+          <div>
+            ${mergeButton}
 
-     </i><tag>${upVoteCount}</tag>
-  </div>
+          </div>
+        </div>
+      </div>
+     </div>
      `)
     return $contributionFull;
   }
