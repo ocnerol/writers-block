@@ -241,7 +241,7 @@ $(() => { //once document is loaded/ready...
       contribution_text
     } = contribution;
 
-    const contributionTitle = `<h1>${contribution_title}</h1>`;
+    const contributionTitle = `<h1 class="accepted-contribution">${contribution_title}</h1>`;
     const contributorName = `<p>${contributor_name}</p>`;
     const contributionText = `<p>${contribution_text}</p>`;
     const $contributionElement = $(`<div class="accepted-contribution">${contributionTitle}${contributorName}${contributionText}</div>`);
