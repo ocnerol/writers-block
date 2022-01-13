@@ -59,7 +59,7 @@ module.exports = (db) => {
       });
   });
 
-  router.post("/markasmerged/:contributionID", (req, res) => {
+  router.post("/mark-as-merged/:contributionID", (req, res) => {
     const contributionID = req.params.contributionID;
 
     db.query(`

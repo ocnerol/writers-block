@@ -6,7 +6,7 @@
 
 $(() => { //once document is loaded/ready...
   mergeContribution = function(storyID, contributionID) {
-    $.post(`/contributions/markasmerged/${contributionID}`)
+    $.post(`/contributions/mark-as-merged/${contributionID}`)
       .catch(error => console.log(error, error.message));
 
     // re-load page when a contribution is added to reflect it being part of the story
