@@ -65,6 +65,19 @@ $(() => { //once document is loaded/ready...
     // $('.add-block-btn').removeClass('hidden');
     // $('.new-block').addClass('hidden');
     // $('.back-to-blocks').addClass('hidden');
+    const storyID = $('body').attr('data-story-id')
+    $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
+    .then((response) => {
+      if (response.is_complete) {
+        $('.add-block-btn').addClass('hidden');
+      } else {
+        $('.add-block-btn').removeClass('hidden');
+      }
+    })
+    .catch((error) => {
+        console.log('Error while loading story', error);
+      });
+
     displayFullContributions();
   });
 
@@ -233,13 +246,6 @@ const loadStory = function() {
   if (!$("#all-contributions").hasClass("hidden")) {
     $(".back-to-blocks").removeClass("hidden");
   }
-
-  // if ($(".back-to-blocks").hasClass("hidden")) {
-  //   $(".back-to-blocks").hide();
-  // }
-  // } else {
-  //   $(".back-to-blocks").addClass("hidden");
-  // }
 
 
 };
