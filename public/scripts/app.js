@@ -103,9 +103,24 @@ const loadStory = function() {
       $("#genre").text(response.genre)
       $("#complete").text(response.is_complete === false ? '(IN PROGRESS)' : '(COMPLETE)')
       $("#story-text").text(response.story_text)
-      $("#story-elements").text(renderAcceptedContributions(acceptedContributions));
+
+      // !!!
+      // clear accepted contributions container
+      $("#accepted-contributions-container").text('');
+      // (re-)populate accepted contributions container with only accepted contributions
+      renderAcceptedContributions(acceptedContributions);
+
+      // clear pending contribution flavour tiles container
+      $("#all-contributions").text('');
+      // (re-)populate pending contribution flavour tiles container
       $("#all-contributions").text(renderContributionsPreview(pendingContributions));
+
+      // clear pending contribution full text tiles container
+      $("#full-contribution-view").text('');
+      // (re-)populate pending contribution full text tiles container
       $("#full-contribution-view").text(renderFullContribution(pendingContributions));
+
+      // !!! ^^^
       $(".full-contribution-container").addClass('hidden')
       console.log('userID------>', userID)
       if (response.story_author_id === userID) {
