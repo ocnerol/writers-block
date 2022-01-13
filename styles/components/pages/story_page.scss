@@ -286,6 +286,19 @@ tag {
   cursor: pointer;
 }
 
+button.merge-contribution {
+  padding: 0.5vw 2vw;
+  margin-left: 1vw;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  background: inherit;
+  color: $black;
+  border: none;
+  font-size: 1.2rem;
+}
+
 //-------------BLOCK FORM-------------------------------------
 
 .form-group {
