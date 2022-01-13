@@ -33,7 +33,6 @@
 
 */
 //----------------------------------------------------------------------------------------------------------------//
-
 $(() => {
   //once document is loaded/ready...
   mergeContribution = function (storyID, contributionID) {
@@ -44,7 +43,6 @@ $(() => {
     // re-load page when a contribution is added to reflect it being part of the story
     loadStory();
   };
-  const storyID = $("body").attr("data-story-id");
 
   //what was in document ready by itself with error
 
@@ -101,12 +99,10 @@ $(() => {
 
 const loadStory = function () {
   const storyID = $("body").attr("data-story-id");
-  console.log("si", storyID);
+  // $.get(`/stories/${storyID}`) //using AJAX to fetch data
   $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
     .then((response) => {
       //console.log('response------>', response)
-      //$("#all-tweets").empty();
-      //renderTweets(response);
       const pendingContributions = response.contributions.filter(
         (contribution) => !contribution.contribution_is_accepted
       );
@@ -120,14 +116,14 @@ const loadStory = function () {
         response.is_complete === false ? "(IN PROGRESS)" : "(COMPLETE)"
       );
       $("#story-text").text(response.story_text);
-      $("#story-elements").text(
-        renderAcceptedContributions(acceptedContributions)
-      );
+      $("#story-elements").text(renderAcceptedContributions(acceptedContributions));
+      $("#all-contributions").text(renderContributionsPreview(pendingContributions));
+      $("#full-contribution-view").text(renderFullContribution(pendingContributions));
       $("#all-contributions").text(
-        renderContributionsPreview(pendingContributions)
+        renderContributionsPreview(response.contributions)
       );
       $("#full-contribution-view").text(
-        renderFullContribution(pendingContributions)
+        renderFullContribution(response.contributions)
       );
       $(".full-contribution-container").addClass("hidden");
       console.log("userID------>", userID);
@@ -210,14 +206,14 @@ const createContributionPreviewElement = function (contribution) {
   const contributionTitle = `<h3 class="contribution-title">${contribution_title}</h3>`;
   const contributorName = `<p class="contributor-name">${nameHyphen}</p>`;
   const flavourText = `<div class="contribution-flavour">${contribution_flavour_text}</div>`;
-  const upVoteCount = `<div class="upvote"> <i class="fas fa-chevron-up"></i><tag class=tag${contribution_id}>${contribution_upvote_count}</tag> <i class="fas fa-chevron-down"></i>`;
+  const upVoteCount = `<div class="upvote"> <i class="fas fa-chevron-up"></i><tag>${contribution_upvote_count}</tag> <i class="fas fa-chevron-down"></i>`;
 
   const $contribution = $(`
-     <div class="contribution-container" data-id="${contribution_id}">
-     <div class="contribution-content">
-     <div class="contribution-heading">
-     ${contributionTitle} ${contributorName} </div> ${flavourText}</div> ${upVoteCount}</div></div>
-     `);
+       <div class="contribution-container" data-id="${contribution_id}">
+       <div class="contribution-content">
+       <div class="contribution-heading">
+       ${contributionTitle} ${contributorName} </div> ${flavourText}</div> ${upVoteCount}</div></div>
+       `);
 
   $($contribution).click(function () {
     const contributionID = $(this).attr("data-id");
@@ -242,6 +238,7 @@ const renderContributionsPreview = function (contributions) {
 };
 
 const createFullContributionElement = function (contribution) {
+  const storyID = $("body").attr("data-story-id");
   const {
     contribution_id,
     contribution_title,
@@ -253,35 +250,34 @@ const createFullContributionElement = function (contribution) {
   } = contribution;
 
   const nameHyphen = `- ${contributor_name}`;
-  // console.log('nameHyphen----->', nameHyphen)
   const contributionTitle = `<h3 class="contribution-title">${contribution_title}</h3>`;
   const contributorName = `<p class="contributor-name">${nameHyphen}</p>`;
   const contributionText = `<div class="contribution-text">${contribution_text}</div>`;
   const upVoteCount = `<div class="upvote" id="upvote-horizontal">
-     <i class="fas fa-chevron-up"></i>
-     <tag class=tag${contribution_id}>${contribution_upvote_count}</tag>
-     <i class="fas fa-chevron-down"></i>
-    </div>`;
+       <i class="fas fa-chevron-up">
+       </i><tag>${contribution_upvote_count}</tag>
+       <i class="fas fa-chevron-down"></i>
+      </div>`;
+
   const mergeButton = `<button class="btn btn-secondary merge-contribution" onclick="mergeContribution(${storyID},${contribution_id})">Merge <img src="../images/merge-icon.svg"></button>`;
 
   const $contributionFull = $(`
-     <div class="full-contribution-container" data-id="${contribution_id}">
-      <div class="full-contribution-content">
-        <div class="contribution-heading">
-          ${contributionTitle}
-          ${contributorName}
-        </div>
-        ${contributionText}
-        <div class="full-contribution-footer">
-          <tag>${upVoteCount}</tag>
-          <div>
-            ${mergeButton}
+       <div class="full-contribution-container" data-id="${contribution_id}">
+       <div class="full-contribution-content">
+       <div class="contribution-heading">
+       ${contributionTitle} ${contributorName} </div> ${contributionText}<div class ="full-contribution-footer">
+       </i><tag>${upVoteCount}</tag>
 
-          </div>
-        </div>
-      </div>
+       <div>
+       ${mergeButton}
      </div>
-     `);
+
+
+
+    </div>
+
+
+       `);
   return $contributionFull;
 };
 
@@ -292,58 +288,18 @@ const renderFullContribution = function (contributions) {
   }
 };
 
-//what was in document ready by itself with error
-
-loadStory();
-$(".back-to-blocks").addClass("hidden");
-
-$(".add-block-btn").click(function () {
-  $(this).addClass("hidden");
-  // $('.full-contribution-container').addClass('hidden');
-  // $('.contribution-container').addClass('hidden');
-  // $('.new-block').removeClass('hidden');
-  // $('.FORM').renoveClass('hidden');
-  hideFullContributions();
-});
-
-$(".back-to-blocks").click(function () {
-  // $('.full-contribution-container').addClass('hidden');
-  // $('.contribution-container').removeClass('hidden');
-  // $('.add-block-btn').removeClass('hidden');
-  // $('.new-block').addClass('hidden');
-  // $('.back-to-blocks').addClass('hidden');
-  displayFullContributions();
-});
-
-const displayFullContributions = function () {
-  $(".full-contribution-container").addClass("hidden");
-  $(".contribution-container").removeClass("hidden");
-  $(".add-block-btn").removeClass("hidden");
-  $(".new-block").addClass("hidden");
-  $(".back-to-blocks").addClass("hidden");
-};
-
-const hideFullContributions = function () {
-  $(".full-contribution-container").addClass("hidden");
-  $(".contribution-container").addClass("hidden");
-  $(".new-block").removeClass("hidden");
-  $(".back-to-blocks").removeClass("hidden");
-};
-
 const createAcceptedContribution = (contribution) => {
   const {
     contribution_title,
     contributor_name,
     contribution_flavour_text,
-    contribution_text,
+    contribution_text
   } = contribution;
 
   const contributionTitle = `<h1 class="accepted-contribution">${contribution_title}</h1>`;
   const contributorName = `<p>${contributor_name}</p>`;
   const contributionText = `<p>${contribution_text}</p>`;
-  const $contributionElement = $(
-    `<div class="accepted-contribution">${contributionTitle}${contributorName}${contributionText}</div>`
-  );
+  const $contributionElement = $(`<div class="accepted-contribution">${contributionTitle}${contributorName}${contributionText}</div>`);
 
   return $contributionElement;
 };
@@ -353,6 +309,4 @@ const renderAcceptedContributions = (contributions) => {
     const $contributionElement = createAcceptedContribution(contribution);
     $("#accepted-contributions-container").append($contributionElement);
   }
-};
-
-//--------------------- FUNCTIONS ----------------------------------------------------------//
+}
