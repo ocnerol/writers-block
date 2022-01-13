@@ -51,8 +51,6 @@ $(() => { //once document is loaded/ready...
    hideFullContributions();
   });
 
-  // $("#complete").text(response.is_complete === false ? '(IN PROGRESS)' : '(COMPLETE)')
-
   $(".back-to-blocks").click(function() {
     // $('.full-contribution-container').addClass('hidden');
     // $('.contribution-container').removeClass('hidden');
@@ -90,24 +88,6 @@ $(() => { //once document is loaded/ready...
     $('.back-to-blocks').removeClass('hidden');
   }
 
-  //   //when we click on the contribution tile
-  // $(".contribution-container").click(function() {
-  //   //reveal contribution content ... where contribution_id matches
-  //   $('.full-contribution-container').removeClass('hidden');
-  //   $('.contribution-container').addClass('hidden');
-  // });
-
-  //   //when we click on the contribution tile
-  // $(".contribution-container").click(function() {
-  // const contributionID = $(this).attr('data-id')
-  // console.log('contributionID---->',contributionID)
-  // console.log('THIS------>',this)
-  //   //reveal contribution content ... where contribution_id matches
-  //   $('.full-contribution-container').removeClass('hidden');
-  //   if (contribution_id)
-  //   $('.contribution-container').addClass('hidden');
-  // });
-
 });
 
 //--------------------- FUNCTIONS ----------------------------------------------------------//
@@ -120,8 +100,6 @@ $(() => { //once document is loaded/ready...
     $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
       .then((response) => {
         //console.log('response------>', response)
-        //$("#all-tweets").empty();
-        //renderTweets(response);
         $("#author").text(`- ${response.author_name}`)
         $("#title").text(response.story_title)
         $("#genre").text(response.genre)
@@ -204,11 +182,6 @@ $(() => { //once document is loaded/ready...
 
 
           });
-
-
-
-          //default complete + inprogress buttons as hidden --> use  .hide/.show THEN SHOW
-          //default merge button hidden, show
         }
       })
       .catch((error) => {
@@ -228,7 +201,6 @@ $(() => { //once document is loaded/ready...
      } = contribution;
 
      const nameHyphen = `- ${contributor_name}`
-    // console.log('nameHyphen----->', nameHyphen)
      const contributionTitle = `<h3 class="contribution-title">${contribution_title}</h3>`;
      const contributorName =`<p class="contributor-name">${nameHyphen}</p>`;
      const flavourText = `<div class="contribution-flavour">${contribution_flavour_text}</div>`;
@@ -250,20 +222,6 @@ $(() => { //once document is loaded/ready...
       $('.contribution-container').addClass('hidden');
       $('.back-to-blocks').removeClass('hidden');
      })
-
-
-
-    //   //when we click on the contribution tile
-    // $(".contribution-container").click(function() {
-    // const contributionID = $(this).attr('data-id')
-    // console.log('contributionID---->',contributionID)
-    // console.log('THIS------>',this)
-    //   //reveal contribution content ... where contribution_id matches
-
-    // });
-
-
-
 
      return $contribution;
 
@@ -288,7 +246,6 @@ $(() => { //once document is loaded/ready...
      } = contribution;
 
      const nameHyphen = `- ${contributor_name}`
-    // console.log('nameHyphen----->', nameHyphen)
      const contributionTitle = `<h3 class="contribution-title">${contribution_title}</h3>`;
      const contributorName =`<p class="contributor-name">${nameHyphen}</p>`;
      const contributionText = `<div class="contribution-text">${contribution_text}</div>`;
