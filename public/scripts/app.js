@@ -104,6 +104,7 @@ $(() => { //once document is loaded/ready...
 
   const loadStory = function() {
     // $.get(`/stories/${storyID}`) //using AJAX to fetch data
+    const storyID = $('body').attr('data-story-id');
     $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
       .then((response) => {
         //console.log('response------>', response)
