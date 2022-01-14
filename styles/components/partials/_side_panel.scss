@@ -7,10 +7,32 @@
   font-family: $serif;
   justify-content: space-between;
   background-color: $purp;
+  // background-image: url('https://static01.nyt.com/images/2020/06/21/multimedia/21AH-cover-Chapman/21AH-cover-Chapman-jumbo.jpg');
+  background-image: url('https://static01.nyt.com/images/2020/04/26/multimedia/26athome-cover/26athome-cover-jumbo.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
   padding: $l-size;
   color: $white;
 }
+
+#side-panel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3); /* Black background with opacity */
+  z-index: 1;
+}
+
+
+#side-panel > * {
+  z-index: 100;
+}
+
 
 .side-panel-top {
   /* Logo: Wb; */
