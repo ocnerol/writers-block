@@ -318,7 +318,7 @@ button.merge-contribution {
 }
 #caption {
   resize: none;
-  margin: 0.5rem 0;
+  // margin: 0.5rem 0;
 }
 #photo {
   resize: none;
@@ -461,4 +461,22 @@ option {
   margin: 0rem 1rem;
   color: black;
   box-shadow: 0.1rem 0.1rem .25rem #ccc;
+}
+
+
+::placeholder {
+  color: $gray;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  font-size: 1.4rem;
+  margin: 1rem;
+}
+
+.form-input {
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  font-family: "Source Serif Pro", Times, serif;
+  font-size: 1.6rem;
 }

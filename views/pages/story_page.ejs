@@ -62,22 +62,38 @@
               <form class="form-group" id="new-post-form" action="/stories/<%= id %>/contributions/new" method="POST">
                 <label for="block-text">What comes next?</label>
 
-                <textarea name="title" id="subtitle" required rows="1"></textarea>
-                <textarea name="flavour_text" id="caption" required rows="1"></textarea>
-                <textarea name="chapter_photo_url" id="photo" rows="1"></textarea>
-                <textarea name="text" id="block-text" required rows="1"></textarea>
+                <textarea class="form-input" name="title" id="subtitle" placeholder="TITLE" required rows="1"></textarea>
+                <textarea class="form-input" name="flavour_text" id="caption" placeholder="CAPTION" required rows="1"></textarea>
+                <textarea class="form-input" name="chapter_photo_url" id="photo" placeholder="PHOTO URL" rows="1"></textarea>
+                <textarea class="form-input" name="text" id="block-text" placeholder="TEXT" required rows="1"></textarea>
 
                 <div class="form-footer">
                   <div>
                       <label for="genre-drop">GENRE:</label>
                       <select id="genre-drop" name="genre-drop">
-                        <option value="volvo">sci-fi</option>
-                        <option value="saab">romance</option>
-                        <option value="fiat" selected>adventure</option>
-                        <option value="audi">thriller</option>
-                        <option value="audi">fantasy</option>
-                        <option value="audi">mystery</option>
-                        <option value="audi">historical fiction</option>
+                        <option value="" disabled selected hidden>Select a genre</option>
+                        <option value="audi">Mystery</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="children's">Children's</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="coming of age">Coming of age</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="folklore">Folklore</option>
+                        <option value="historical">Historical</option>
+                        <option value="horror">Horror</option>
+                        <option value="political">Political</option>
+                        <option value="psychological">Psychological</option>
+                        <option value="romance">Romance</option>
+                        <option value="satire">Satire</option>
+                        <option value="science fiction">Science Fiction</option>
+                        <option value="spy">Spy</option>
+                        <option value="thriller">Thriller</option>
+                        <option value="western">Western</option>
+                        <option value="young adult">Young Adult</option>
+
+
+
+
                       </select>
                   </div>
                   <button class="submit-block-btn" type="submit">SUBMIT</button>
