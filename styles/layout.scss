@@ -65,6 +65,11 @@ body {
     }
   }
 
+  #side-panel::after {
+    content: "";
+    display: none;
+  }
+
   /*MAIN BODY RESPONSIVE DESIGN*/
   .main-body {
     margin: 0;
