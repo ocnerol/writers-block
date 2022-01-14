@@ -72,11 +72,6 @@ body {
 
 /*For even smaller screens*/
 @media only screen and (max-width: 420px) {
-  /*Remove side panel app name 'Writer's Block' for aesthetics*/
-  .side-panel-top h3 {
-    visibility: hidden;
-  }
-
   /*add margin to top of logo so register/login buttons do not overlap with logo*/
   .side-panel-top h2 {
     margin-top: $l-size;
