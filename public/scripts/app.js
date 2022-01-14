@@ -107,6 +107,11 @@ const loadStory = function() {
   $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
     .then((response) => {
       //console.log('response------>', response)
+      //$("#all-tweets").empty();
+      //renderTweets(response);
+      const userID = Number(response.userID);
+      const authorID = response.story_author_id;
+
       const pendingContributions = response.contributions.filter(contribution => !contribution.contribution_is_accepted);
       const acceptedContributions = response.contributions.filter(contribution => contribution.contribution_is_accepted);
       $("#author").text(`- ${response.author_name}`)
@@ -129,7 +134,7 @@ const loadStory = function() {
       // clear pending contribution full text tiles container
       $("#full-contribution-view").text('');
       // (re-)populate pending contribution full text tiles container
-      $("#full-contribution-view").text(renderFullContribution(pendingContributions));
+      $("#full-contribution-view").text(renderFullContribution(pendingContributions, userID, authorID));
 
       // !!! ^^^
       $(".full-contribution-container").addClass('hidden')
@@ -314,7 +319,7 @@ const renderContributionsPreview = function(contributions) {
   }
 };
 
-const createFullContributionElement = function(contribution) {
+const createFullContributionElement = function(contribution, userID, authorID) {
   const storyID = $('body').attr('data-story-id');
   const {
     contribution_id,
@@ -337,7 +342,7 @@ const createFullContributionElement = function(contribution) {
    </i><tag class=tag${contribution_id}>${contribution_upvote_count}</tag>
    <i class="fas fa-chevron-down"></i>
   </div>`
-  const mergeButton = `<button class="btn btn-secondary merge-contribution" onclick="mergeContribution(${storyID},${contribution_id})">Merge <img src="../images/merge-icon.svg"></button>`;
+  const mergeButton = authorID && userID && authorID === userID  ? `<button class="btn btn-secondary merge-contribution" onclick="mergeContribution(${storyID},${contribution_id})">Merge <img src="../images/merge-icon.svg"></button>` : '';
 
   const $contributionFull = $(`
    <div class="full-contribution-container" data-id="${contribution_id}">
@@ -360,9 +365,9 @@ const createFullContributionElement = function(contribution) {
   return $contributionFull;
 }
 
-const renderFullContribution = function(contributions) {
+const renderFullContribution = function(contributions, userID, authorID) {
   for (let contribution of contributions) {
-    const $newFullContribution = createFullContributionElement(contribution);
+    const $newFullContribution = createFullContributionElement(contribution, userID, authorID);
     $("#full-contribution-view").append($newFullContribution); //adds new contribution to the bottom of the contribution container
   }
 };

@@ -91,6 +91,7 @@ module.exports = (db) => {
 
 
   router.get("/:id/data", (req, res) => {
+    const userID = req.session.user_id;
     const id = req.params.id;
     const query = `
     SELECT stories.title AS story_title,
@@ -172,7 +173,8 @@ module.exports = (db) => {
           story_text,
           genre,
           story_author_id,
-          contributions
+          contributions,
+          userID
         };
 
         //const authorName = data.author_name
