@@ -26,7 +26,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+    box-shadow:rgba(0, 0, 0, 0.35) 0px 5px 10px;
   }
 
   #pencil {
@@ -34,7 +34,114 @@
   }
 
 }
+/*------------LANDING DIV------------------- */
 
+.landing-div {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background-color: #19191F;
+  z-index: 10;
+  background-color: #19191f;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+}
+
+.landing-wb-brand-panel {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin-left: 3rem;
+  margin-top: 3rem;
+}
+
+.repeat-wb {
+  font-family: 'Source Serif Pro', Times, serif;
+  font-size: 9.6rem;
+  padding-top: 2rem;
+  font-weight: 700;
+  line-height: 9.6rem;
+}
+
+#wb1 {
+  opacity: 1;
+  padding-bottom: 2rem;
+}
+#wb2 {
+  opacity: 0.5;
+  color: white;
+  padding-bottom: 2rem;
+}
+#wb3 {
+  opacity: 0.35;
+  padding-bottom: 2rem;
+}
+#wb4 {
+  opacity: 0.2;
+  padding-bottom: 2rem;
+}
+
+.wb-description {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32.6rem;
+  margin-left: 10rem;
+}
+
+.line {
+  border: 2px solid $white;
+  border-radius: 1px;
+  color: $white;
+  z-index: 30;
+  width: 30%;
+  margin: 2rem 0;
+  opacity: 1;
+}
+
+.slogan {
+  font-family: 'Source Serif Pro', Times, serif;
+  font-size: 4.8rem;
+  font-weight: 700;
+  color: white;
+}
+
+.description {
+  font-family: 'Roboto', Helvetica, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: white;
+  margin-top: 2rem;
+}
+
+.get-started-btn {
+  font-family: 'Roboto', Helvetica, sans-serif;
+  font-size: 1.6rem;
+  color: white;
+  margin-top: 7.2rem;
+  border: solid;
+  border-color: $white;
+  border-width: 0.2rem;
+  border-radius: 3rem;
+  padding: 1rem;
+  max-width: 30%;
+  text-align: center;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+}
+.get-started-btn:hover {
+  background-color: white;
+  color: #19191F;
+  border-width: 0.2rem;
+  border-radius: 3rem;
+  padding: 1rem;
+  max-width: 30%;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+}
+
+/*------------------------------------------ */
 
 /*title, author, progress, genre*/
 .story-details {
