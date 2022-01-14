@@ -41,6 +41,10 @@
 .side-panel-bottom h2 {
   font-size: $l-size;
   word-break: break-word;
+
+  span {
+    font-style: italic;
+  }
 }
 
 /*Flavour text at bottom of side panel*/
