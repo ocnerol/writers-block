@@ -287,7 +287,7 @@ const createContributionPreviewElement = function(contribution) {
   const contributionTitle = `<h3 class="contribution-title">${contribution_title}</h3>`;
   const contributorName = `<p class="contributor-name">${nameHyphen}</p>`;
   const flavourText = `<div class="contribution-flavour">${contribution_flavour_text}</div>`;
-  const upVoteCount = `<div class="upvote"> <i class="fas fa-chevron-up"></i><tag>${contribution_upvote_count}</tag> <i class="fas fa-chevron-down"></i>`
+  const upVoteCount = `<div class="upvote"> <i class="fas fa-chevron-up"></i><tag class=tag${contribution_id}>${contribution_upvote_count}</tag> <i class="fas fa-chevron-down"></i>`
 
   const $contribution = $(`
    <div class="contribution-container" data-id="${contribution_id}">
@@ -337,7 +337,7 @@ const createFullContributionElement = function(contribution) {
 
    <i class="fas fa-chevron-up">
 
-   </i><tag>${contribution_upvote_count}</tag>
+   </i><tag class=tag${contribution_id}>${contribution_upvote_count}</tag>
    <i class="fas fa-chevron-down"></i>
   </div>`
   const mergeButton = `<button class="btn btn-secondary merge-contribution" onclick="mergeContribution(${storyID},${contribution_id})">Merge <img src="../images/merge-icon.svg"></button>`;

@@ -16,6 +16,23 @@ const getAllStories = (db) => {
 
 exports.getAllStories = getAllStories;
 
+// get all contributions to a story by story ID
+const getStoryContributions = (db, storyID) => {
+  const query = `
+  SELECT * FROM contributions
+  WHERE story_id = $1;
+    `;
+  // console.log(query);
+  return db.query(query, [storyID])
+    .then(data => {
+      // console.log(data.rows);
+      return (data.rows);
+    })
+    .catch(err => err.message);
+};
+
+exports.getStoryContributions = getStoryContributions;
+
 // for / index route. If no user, return null else fetch user by id to display name
 const getAllUsers = (db, id) => {
   if (!id) {
@@ -39,3 +56,38 @@ const getAllUsers = (db, id) => {
 };
 
 exports.getAllUsers = getAllUsers;
+
+
+// Queries for upvote/downvote function
+const increaseUpvoteCount = (db, contributionID) => {
+  const query = `
+    UPDATE contributions
+    SET upvote_count = upvote_count + 1
+    WHERE id = $1
+  `;
+
+  return db.query(query, [contributionID])
+    .then(() => {
+      console.log('upvote done')
+    })
+    .catch(err => err.message);
+};
+
+exports.increaseUpvoteCount = increaseUpvoteCount;
+
+const decreaseUpvoteCount = (db, contributionID) => {
+  const query = `
+    UPDATE contributions
+    SET upvote_count = upvote_count - 1
+    WHERE id = $1
+  `;
+
+  return db.query(query, [contributionID])
+  .then(() => {
+    console.log('downvote done')
+  })
+  .catch(err => err.message);
+};
+
+exports.decreaseUpvoteCount = decreaseUpvoteCount;
+
