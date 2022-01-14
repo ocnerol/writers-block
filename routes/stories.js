@@ -18,7 +18,7 @@ module.exports = (db) => {
     JOIN users ON stories.author_id = users.id
     ORDER BY id DESC;
     `;
-    console.log(query);
+    // console.log(query);
     db.query(query)
       .then(data => {
         res.json(data.rows);
@@ -117,11 +117,11 @@ module.exports = (db) => {
     WHERE stories.id = $1
     ORDER BY contributions.id;
     `;
-    console.log(query);
+    // console.log(query);
     db.query(query, [id])
       .then(response => {
         // story information
-        console.log(id);
+        // console.log(id);
         const {
           story_title,
           cover_photo,
