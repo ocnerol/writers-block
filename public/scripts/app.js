@@ -42,7 +42,10 @@ $(() => { //once document is loaded/ready...
       .catch(error => console.log(error, error.message));
 
     // re-load page when a contribution is added to reflect it being part of the story
-    loadStory();
+    setTimeout(() => {
+      loadStory();
+    }, 10);
+
     $(".back-to-blocks").addClass('hidden');
   };
 
