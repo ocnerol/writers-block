@@ -100,11 +100,12 @@ div.accepted-contribution {
 }
 .accepted-contribution > * {
   font-size: 1.6rem;
+  word-break: break-word;
 }
 
 h1.accepted-contribution {
   font-weight: bold;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .add-block-btn {
