@@ -42,6 +42,7 @@
 /*Story title header at bottom of side panel*/
 .side-panel-bottom h2 {
   font-size: $l-size;
+  word-break: break-word;
 }
 
 /*Flavour text at bottom of side panel*/
@@ -50,6 +51,7 @@
   font-size: $s-size;
   font-style: italic;
   width: 80%;
+  word-break: break-word;
 }
 
 /*Side panel login/logout button*/
