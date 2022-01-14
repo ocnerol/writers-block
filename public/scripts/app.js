@@ -36,6 +36,7 @@
 
 
 $(() => { //once document is loaded/ready...
+
   mergeContribution = function(storyID, contributionID) {
     $.post(`/contributions/mark-as-merged/${contributionID}`)
       .catch(error => console.log(error, error.message));
@@ -106,8 +107,6 @@ const loadStory = function() {
   $.get(`/stories/${storyID}/data`) //using AJAX to fetch data
     .then((response) => {
       //console.log('response------>', response)
-      //$("#all-tweets").empty();
-      //renderTweets(response);
       const pendingContributions = response.contributions.filter(contribution => !contribution.contribution_is_accepted);
       const acceptedContributions = response.contributions.filter(contribution => contribution.contribution_is_accepted);
       $("#author").text(`- ${response.author_name}`)
@@ -135,6 +134,7 @@ const loadStory = function() {
       // !!! ^^^
       $(".full-contribution-container").addClass('hidden')
       console.log('userID------>', userID)
+
       if (response.story_author_id === userID) {
         if (response.is_complete) {
           $(".complete-toggle").addClass('pressed-complete')
@@ -163,6 +163,7 @@ const loadStory = function() {
           .catch((error) => {
             console.log('Error while loading story', error);
           });
+//-------------------------SHOW CREATE A STORY BUTTON ON SPECIFIC STORY PAGE IF LOGGED IN
 
         // --------- If author, when clicking the COMPLETE button, add class
         $(".complete-toggle").click(function() {
@@ -176,9 +177,6 @@ const loadStory = function() {
           $(".add-block-btn").addClass('hidden')
           //Hide 'BLOCK FORM'
           $(".new-block").addClass('hidden')
-
-
-
 
           //Hide ---> 'Back to blocks'
           $(".back-to-blocks").addClass('hidden')
