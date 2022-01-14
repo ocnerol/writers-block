@@ -24,6 +24,15 @@ $(() => {
       $(".landing-div").hide();
     },2000 )
 
-  });
+  })
+//TEST
+  $('.login-button').on('click', (e) => {
+    e.preventDefault();
+    $.post(`http://localhost:8080/users/login/2`)
+    .then(() => {
+      // location.reload();
+    })
+  })
+
 
 });
