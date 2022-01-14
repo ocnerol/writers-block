@@ -108,6 +108,11 @@ const loadStory = function() {
       //console.log('response------>', response)
       //$("#all-tweets").empty();
       //renderTweets(response);
+      console.log('response.userID:', response.userID);
+      const userID = response.userID;
+      const authorID = response.story_author_id;
+      console.log('authorID:', authorID);
+
       const pendingContributions = response.contributions.filter(contribution => !contribution.contribution_is_accepted);
       const acceptedContributions = response.contributions.filter(contribution => contribution.contribution_is_accepted);
       $("#author").text(`- ${response.author_name}`)
@@ -130,7 +135,7 @@ const loadStory = function() {
       // clear pending contribution full text tiles container
       $("#full-contribution-view").text('');
       // (re-)populate pending contribution full text tiles container
-      $("#full-contribution-view").text(renderFullContribution(pendingContributions));
+      $("#full-contribution-view").text(renderFullContribution(pendingContributions, userID));
 
       // !!! ^^^
       $(".full-contribution-container").addClass('hidden')
@@ -176,7 +181,6 @@ const loadStory = function() {
           $(".add-block-btn").addClass('hidden')
           //Hide 'BLOCK FORM'
           $(".new-block").addClass('hidden')
-
 
 
 
@@ -317,7 +321,7 @@ const renderContributionsPreview = function(contributions) {
   }
 };
 
-const createFullContributionElement = function(contribution) {
+const createFullContributionElement = function(contribution, userID, authorID) {
   const storyID = $('body').attr('data-story-id');
   const {
     contribution_id,
@@ -341,7 +345,6 @@ const createFullContributionElement = function(contribution) {
    <i class="fas fa-chevron-down"></i>
   </div>`
   const mergeButton = `<button class="btn btn-secondary merge-contribution" onclick="mergeContribution(${storyID},${contribution_id})">Merge <img src="../images/merge-icon.svg"></button>`;
-
   const $contributionFull = $(`
    <div class="full-contribution-container" data-id="${contribution_id}">
     <div class="full-contribution-content">
