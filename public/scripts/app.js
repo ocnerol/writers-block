@@ -163,7 +163,6 @@ const loadStory = function() {
           .catch((error) => {
             console.log('Error while loading story', error);
           });
-//-------------------------SHOW CREATE A STORY BUTTON ON SPECIFIC STORY PAGE IF LOGGED IN
 
         // --------- If author, when clicking the COMPLETE button, add class
         $(".complete-toggle").click(function() {
