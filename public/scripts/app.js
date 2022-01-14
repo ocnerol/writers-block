@@ -182,11 +182,6 @@ const loadStory = function() {
           //Hide 'BLOCK FORM'
           $(".new-block").addClass('hidden')
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
           //Hide ---> 'Back to blocks'
           $(".back-to-blocks").addClass('hidden')
 
