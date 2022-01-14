@@ -1,8 +1,10 @@
 body {
   display: flex;
+  flex-flow: row wrap;
 }
 
 .side-panel-container {
+  flex: 1;
   width: $side-panel-width;
   position: fixed;
   top: 0;
@@ -11,6 +13,7 @@ body {
 }
 
 .main-body {
+  flex: 1;
   /*needs left margin otherwise would position itself underneath side panel*/
   margin-left: $side-panel-width;
   width: $main-body-width;

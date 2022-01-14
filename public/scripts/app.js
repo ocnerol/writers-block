@@ -36,6 +36,7 @@
 
 
 $(() => { //once document is loaded/ready...
+
   mergeContribution = function(storyID, contributionID) {
     $.post(`/contributions/mark-as-merged/${contributionID}`)
       .catch(error => console.log(error, error.message));
@@ -137,6 +138,11 @@ const loadStory = function() {
 
       // !!! ^^^
       $(".full-contribution-container").addClass('hidden')
+<<<<<<< HEAD
+=======
+      console.log('userID------>', userID)
+
+>>>>>>> master
       if (response.story_author_id === userID) {
         if (response.is_complete) {
           $(".complete-toggle").addClass('pressed-complete')
@@ -179,8 +185,11 @@ const loadStory = function() {
           //Hide 'BLOCK FORM'
           $(".new-block").addClass('hidden')
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> master
           //Hide ---> 'Back to blocks'
           $(".back-to-blocks").addClass('hidden')
 
