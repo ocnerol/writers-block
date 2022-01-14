@@ -463,6 +463,30 @@ option {
   box-shadow: 0.1rem 0.1rem .25rem #ccc;
 }
 
+.pressed-ongoing {
+  border-radius: 50px;
+  background-color: $gold;
+  border:solid;
+  border-color: $gold;
+  border-width: .2rem;
+  padding: 1rem;
+  margin: 0rem 1rem;
+  color: black;
+  box-shadow: 0.1rem 0.1rem .25rem #ccc;
+}
+
+
+.create-story-btn {
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  color: $purp;
+  font-size: 1.4rem;
+  text-decoration: none;
+  padding-bottom: 2rem;
+}
 
 ::placeholder {
   color: $gray;
