@@ -138,11 +138,8 @@ const loadStory = function() {
 
       // !!! ^^^
       $(".full-contribution-container").addClass('hidden')
-<<<<<<< HEAD
-=======
       console.log('userID------>', userID)
 
->>>>>>> master
       if (response.story_author_id === userID) {
         if (response.is_complete) {
           $(".complete-toggle").addClass('pressed-complete')
