@@ -108,10 +108,8 @@ const loadStory = function() {
       //console.log('response------>', response)
       //$("#all-tweets").empty();
       //renderTweets(response);
-      console.log('response.userID:', response.userID);
-      const userID = response.userID;
+      const userID = Number(response.userID);
       const authorID = response.story_author_id;
-      console.log('authorID:', authorID);
 
       const pendingContributions = response.contributions.filter(contribution => !contribution.contribution_is_accepted);
       const acceptedContributions = response.contributions.filter(contribution => contribution.contribution_is_accepted);
@@ -135,7 +133,7 @@ const loadStory = function() {
       // clear pending contribution full text tiles container
       $("#full-contribution-view").text('');
       // (re-)populate pending contribution full text tiles container
-      $("#full-contribution-view").text(renderFullContribution(pendingContributions, userID));
+      $("#full-contribution-view").text(renderFullContribution(pendingContributions, userID, authorID));
 
       // !!! ^^^
       $(".full-contribution-container").addClass('hidden')
@@ -344,7 +342,8 @@ const createFullContributionElement = function(contribution, userID, authorID) {
    </i><tag class=tag${contribution_id}>${contribution_upvote_count}</tag>
    <i class="fas fa-chevron-down"></i>
   </div>`
-  const mergeButton = `<button class="btn btn-secondary merge-contribution" onclick="mergeContribution(${storyID},${contribution_id})">Merge <img src="../images/merge-icon.svg"></button>`;
+  const mergeButton = authorID && userID && authorID === userID  ? `<button class="btn btn-secondary merge-contribution" onclick="mergeContribution(${storyID},${contribution_id})">Merge <img src="../images/merge-icon.svg"></button>` : '';
+
   const $contributionFull = $(`
    <div class="full-contribution-container" data-id="${contribution_id}">
     <div class="full-contribution-content">
@@ -366,9 +365,9 @@ const createFullContributionElement = function(contribution, userID, authorID) {
   return $contributionFull;
 }
 
-const renderFullContribution = function(contributions) {
+const renderFullContribution = function(contributions, userID, authorID) {
   for (let contribution of contributions) {
-    const $newFullContribution = createFullContributionElement(contribution);
+    const $newFullContribution = createFullContributionElement(contribution, userID, authorID);
     $("#full-contribution-view").append($newFullContribution); //adds new contribution to the bottom of the contribution container
   }
 };
