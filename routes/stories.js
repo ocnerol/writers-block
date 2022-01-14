@@ -306,7 +306,8 @@ module.exports = (db) => {
               .json({ error: err.message });
           });
         } else {
-          return res.status(400).send("Story is complete")
+          //return res.status(400).send("Story is complete")
+          return res.status(400).send(`<div style="padding-top: 80px;"><style> body { background-color: #942636;} </style><h1 style="color: #FFFFFF;font-size:60px;font-family:Source Serif Pro;text-align:center;margin:30px;">Story is complete.<br><br><a href=/urls style="color: #FFFFFF;"> Return to Writer's Block. </a></h1>`)
         }
       })
       .catch(err => {
