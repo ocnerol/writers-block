@@ -42,6 +42,10 @@
 /*Story title header at bottom of side panel*/
 .side-panel-bottom h2 {
   font-size: $l-size;
+
+  span {
+    font-style: italic;
+  }
 }
 
 /*Flavour text at bottom of side panel*/

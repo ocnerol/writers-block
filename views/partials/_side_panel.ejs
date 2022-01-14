@@ -5,7 +5,7 @@
   </div>
 
   <div class="side-panel-bottom">
-    <h2><%= stories[2].title %></h2>
+    <h2><span>Popular Read: </span><br> <%= stories[2].title %></h2>
     <p><%= stories[2].flavour_text %></p>
     <% if (userName) { %>
       <form method="POST" action="/users/logout" class="register-login logged-in">
