@@ -1,7 +1,5 @@
 $(document).ready(() => {
-
-  $('#back-button').on('click', () => {
+  $("#back-button").on("click", () => {
     history.back();
   });
-
 });
