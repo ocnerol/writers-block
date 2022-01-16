@@ -5,17 +5,17 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const express = require('express');
-const router  = express.Router();
+const express = require("express");
+const router = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM users;`)
-      .then(data => {
+      .then((data) => {
         const users = data.rows;
         res.json({ users });
       })
-      .catch(err => {
+      .catch((err) => {
         res
           .status(500)
           .json({ error: err.message });
@@ -24,7 +24,7 @@ module.exports = (db) => {
 
   router.post("/login/:id", (req, res) => {
     req.session.user_id = req.params.id;
-    res.redirect('/');
+    res.redirect("/");
   });
 
   router.post("/logout", (req, res) => {
