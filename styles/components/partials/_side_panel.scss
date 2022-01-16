@@ -6,7 +6,7 @@
   flex-direction: column;
   font-family: $serif;
   justify-content: space-between;
-  background-color: $purp;
+  background-color: $maroon;
   // background-image: url('https://static01.nyt.com/images/2020/06/21/multimedia/21AH-cover-Chapman/21AH-cover-Chapman-jumbo.jpg');
   background-image: url('https://static01.nyt.com/images/2020/04/26/multimedia/26athome-cover/26athome-cover-jumbo.jpg');
   background-position: center;
@@ -17,6 +17,7 @@
   color: $white;
 }
 
+/*pseudo-class needed for overlay effect. give it z-index of 1 to place it over original div*/
 #side-panel::after {
   content: "";
   position: absolute;
@@ -28,12 +29,12 @@
   z-index: 1;
 }
 
-
+/*Give all direct children the highest relative z-index so text is placed on top of overlay*/
 #side-panel > * {
   z-index: 100;
 }
 
-
+/*Content in the top half of side panel*/
 .side-panel-top {
   /* Logo: Wb; */
   h2 {
@@ -59,7 +60,7 @@
   }
 }
 
-/*Story title header at bottom of side panel*/
+/*Story title header at bottom half of side panel*/
 .side-panel-bottom h2 {
   font-size: $l-size;
   word-break: break-word;
@@ -104,6 +105,7 @@
   column-gap: $s-size;
 }
 
+/*Layout for text that is displayed when a user is logged in*/
 .logged-in {
   flex-direction: column;
   justify-content: flex-end;
