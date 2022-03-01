@@ -1,4 +1,4 @@
-# Writer's Block; 
+# [Writer's Block](https://writers-block-story-creator.herokuapp.com/); 
 
 - Responsive full-stack web app for authors to create short stories and invite other users to continue the stories by giving them the ability to add contributions. Story contributions can be read and upvoted/downvoted by all registered users. Authors can merge the contributions that they like to their story and reject all other contributions.
 
@@ -15,6 +15,7 @@
 - Mobile Responsive design
 
 ## Final Product
+[Click here to view the deployed version on Heroku](https://writers-block-story-creator.herokuapp.com/)
 ### Landing page followed by user upvoting a story contribution
 ![Screenrecording - Landing Page and User Upvote](./docs/1_landing_user_upvote.gif)
 
