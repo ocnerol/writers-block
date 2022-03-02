@@ -31,8 +31,8 @@
 ### Mobile Responsive Design
 ![Screenrecording - Mobile Responsive Design](./docs/5_responsive_design.gif)
 
-
-
+### Video Walkthrough
+<iframe id="video" width="560" height="315" src="./docs/wb_walkthrough.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
 
 ## Tech Stack
 - PostgreSQL
