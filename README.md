@@ -12,7 +12,7 @@
 - All users are able to read stories and story contributions
 - Registered users can provide feedback by upvoting or downvoting contributions
 - Authors can merge any user contributions that they like regardless of the number of votes that a contribution has
-- Mobile Responsive design
+- Mobile Responsive Design
 
 ## Final Product
 [Click here to view the deployed version on Heroku](https://writers-block-story-creator.herokuapp.com/)
