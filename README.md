@@ -32,7 +32,7 @@
 ![Screenrecording - Mobile Responsive Design](./docs/5_responsive_design.gif)
 
 ### Video Walkthrough
-<iframe id="video" width="560" height="315" src="./docs/wb_walkthrough.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+https://github.com/ocnerol/writers-block/blob/clean-sm/docs/wb_walkthrough.mp4
 
 ## Tech Stack
 - PostgreSQL
