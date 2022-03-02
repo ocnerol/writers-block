@@ -4,14 +4,15 @@ const getAllStories = (db) => {
     FROM stories
     JOIN users ON stories.author_id = users.id
     ORDER BY id DESC;
-    `;
+  `;
   // console.log(query);
-  return db.query(query)
-    .then(data => {
+  return db
+    .query(query)
+    .then((data) => {
       // console.log(data.rows);
-      return (data.rows);
+      return data.rows;
     })
-    .catch(err => err.message);
+    .catch((err) => err.message);
 };
 
 exports.getAllStories = getAllStories;
@@ -19,16 +20,17 @@ exports.getAllStories = getAllStories;
 // get all contributions to a story by story ID
 const getStoryContributions = (db, storyID) => {
   const query = `
-  SELECT * FROM contributions
-  WHERE story_id = $1;
-    `;
+    SELECT * FROM contributions
+    WHERE story_id = $1;
+  `;
   // console.log(query);
-  return db.query(query, [storyID])
-    .then(data => {
+  return db
+    .query(query, [storyID])
+    .then((data) => {
       // console.log(data.rows);
-      return (data.rows);
+      return data.rows;
     })
-    .catch(err => err.message);
+    .catch((err) => err.message);
 };
 
 exports.getStoryContributions = getStoryContributions;
@@ -42,21 +44,21 @@ const getAllUsers = (db, id) => {
   const query = `
     SELECT name FROM users
     WHERE id = $1;
-    `;
+  `;
   // console.log(query);
-  return db.query(query, [id])
-    .then(data => {
+  return db
+    .query(query, [id])
+    .then((data) => {
       if (data.rows) {
-        return (data.rows[0].name);
+        return data.rows[0].name;
       } else {
         return null;
       }
     })
-    .catch(err => err.message);
+    .catch((err) => err.message);
 };
 
 exports.getAllUsers = getAllUsers;
-
 
 // Queries for upvote/downvote function
 const increaseUpvoteCount = (db, contributionID) => {
@@ -66,11 +68,12 @@ const increaseUpvoteCount = (db, contributionID) => {
     WHERE id = $1
   `;
 
-  return db.query(query, [contributionID])
+  return db
+    .query(query, [contributionID])
     .then(() => {
-      console.log('upvote done')
+      console.log("upvote done");
     })
-    .catch(err => err.message);
+    .catch((err) => err.message);
 };
 
 exports.increaseUpvoteCount = increaseUpvoteCount;
@@ -82,12 +85,12 @@ const decreaseUpvoteCount = (db, contributionID) => {
     WHERE id = $1
   `;
 
-  return db.query(query, [contributionID])
-  .then(() => {
-    console.log('downvote done')
-  })
-  .catch(err => err.message);
+  return db
+    .query(query, [contributionID])
+    .then(() => {
+      console.log("downvote done");
+    })
+    .catch((err) => err.message);
 };
 
 exports.decreaseUpvoteCount = decreaseUpvoteCount;
-

@@ -176,7 +176,7 @@ const loadStory = function() {
         $(".complete-toggle").click(function() {
           const storyID = $('body').attr('data-story-id')
           //console.log('storyID------>', storyID)
-          $.post(`http://localhost:8080/stories/${storyID}/complete`)
+          $.post(`/stories/${storyID}/complete`)
           $(".complete-toggle").addClass('pressed-complete')
           $(".ongoing-toggle").removeClass('pressed-ongoing')
 
@@ -213,7 +213,7 @@ const loadStory = function() {
         //---------- If author, when clicking the ONGOING button, add class
         $(".ongoing-toggle").click(function() {
           const storyID = $('body').attr('data-story-id')
-          $.post(`http://localhost:8080/stories/${storyID}/ongoing`)
+          $.post(`/stories/${storyID}/ongoing`)
           $(".complete-toggle").removeClass('pressed-complete')
           $(".ongoing-toggle").addClass('pressed-ongoing')
 

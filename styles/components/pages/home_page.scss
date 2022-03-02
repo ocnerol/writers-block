@@ -16,6 +16,7 @@
   justify-content: space-between;
   align-items: flex-end;
 
+  /*SVG Button Link to create a new story*/
   a {
     background-color: $gold;
     width: 6rem;
@@ -29,6 +30,7 @@
     box-shadow:rgba(0, 0, 0, 0.35) 0px 5px 10px;
   }
 
+  /*svg font awesome icon*/
   #pencil {
     color: black;
   }
@@ -54,6 +56,7 @@
   margin-top: 3rem;
 }
 
+/*"Writer's Block" repeated text*/
 .repeat-wb {
   font-family: 'Source Serif Pro', Times, serif;
   font-size: 9.6rem;
@@ -141,7 +144,7 @@
   letter-spacing: 0.25rem;
 }
 
-/*------------------------------------------ */
+/*-------------------END LANDING DIV----------------------- */
 
 /*title, author, progress, genre*/
 .story-details {

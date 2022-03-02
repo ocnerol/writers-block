@@ -19,7 +19,7 @@ $(document).ready(() => {
     $(this).css("color", "red");
     // change the opposite arrow to purple
     $(this).siblings(".fa-chevron-down").css("color", "#942636");
-    $.post(`http://localhost:8080/contributions/${contributionID}/upvote`).then(
+    $.post(`/contributions/${contributionID}/upvote`).then(
       () => {
         // Get current count value and increment
         let currentVoteCount = Number(
@@ -59,7 +59,7 @@ $(document).ready(() => {
     // change the opposite arrow to purple
     $(this).siblings(".fa-chevron-up").css("color", "#942636");
     $.post(
-      `http://localhost:8080/contributions/${contributionID}/downvote`
+      `/contributions/${contributionID}/downvote`
     ).then(() => {
       // Get current count value and increment
       let currentVoteCount = Number(
