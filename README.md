@@ -15,7 +15,6 @@
 - Mobile Responsive Design
 
 ## Final Product
-[Click here to view the deployed version on Heroku](https://writers-block-story-creator.herokuapp.com/)
 ### Landing page followed by user upvoting a story contribution
 ![Screenrecording - Landing Page and User Upvote](./docs/1_landing_user_upvote.gif)
 
